@@ -123,6 +123,11 @@ function PropfairSection() {
             <FadeIn>
               <div className="relative">
                 <div className="absolute -inset-6 bg-primary/5 rounded-3xl blur-2xl" />
+                <div className="flex items-center gap-2 mb-3">
+                  <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+                  <span className="text-primary text-[10px] font-mono font-bold uppercase tracking-[0.3em]">Pan-India Presence</span>
+                </div>
+                <p className="text-white/60 text-xs font-mono mb-4">14+ Events · 5 Cities · 1 Vision</p>
                 <div className="relative rounded-2xl overflow-hidden border border-white/[0.06]">
                   <img
                     src="/propfair-map.jpg"
@@ -130,14 +135,6 @@ function PropfairSection() {
                     className="w-full h-auto object-contain"
                     loading="lazy"
                   />
-                  {/* Overlay label */}
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#080A11] via-[#080A11]/60 to-transparent p-6">
-                    <div className="flex items-center gap-2 mb-2">
-                      <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-                      <span className="text-primary text-[10px] font-mono font-bold uppercase tracking-[0.3em]">Pan-India Presence</span>
-                    </div>
-                    <p className="text-white/60 text-xs font-mono">14+ Events · 5 Cities · 1 Vision</p>
-                  </div>
                 </div>
               </div>
             </FadeIn>
