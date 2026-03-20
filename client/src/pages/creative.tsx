@@ -8,7 +8,6 @@ import {
   StaggerItem,
   MagneticElement,
   GlitchText,
-  FilmGrain,
   SignatureOrbit,
 } from "@/components/animations";
 import { SIGNATURE_ORBIT_TEXT } from "@/lib/constants";
@@ -25,10 +24,14 @@ function CreativeHero() {
   return (
     <section
       ref={containerRef}
-      className="relative min-h-[85vh] lg:min-h-screen bg-[#0A0C14] overflow-hidden"
+      className="relative min-h-[85vh] lg:min-h-screen bg-[#F8F8F8] overflow-hidden"
       data-testid="section-creative-hero"
     >
-      <FilmGrain opacity={0.05} />
+      {/* Subtle grid texture */}
+      <div className="absolute inset-0 pointer-events-none" style={{
+        backgroundImage: "linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px)",
+        backgroundSize: "80px 80px"
+      }} />
 
       {/* Giant background word */}
       <div className="absolute top-[10%] -right-[5%] pointer-events-none select-none">
@@ -36,7 +39,7 @@ function CreativeHero() {
           initial={{ opacity: 0, x: 100 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.4, duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-          className="font-heading text-[clamp(10rem,22vw,20rem)] font-extrabold text-white/[0.02] leading-none block"
+          className="font-heading text-[clamp(10rem,22vw,20rem)] font-extrabold text-foreground/[0.04] leading-none block"
         >
           CREATE
         </motion.span>
@@ -57,8 +60,8 @@ function CreativeHero() {
           text={SIGNATURE_ORBIT_TEXT}
           size={120}
           progress={scrollYProgress}
-          minOpacity={0.05}
-          maxOpacity={0.12}
+          minOpacity={0.06}
+          maxOpacity={0.18}
         />
       </div>
 
@@ -74,50 +77,50 @@ function CreativeHero() {
             >
               <div className="w-12 h-[1px] bg-primary" />
               <GlitchText text="Creative Department" className="text-primary text-sm font-mono font-bold uppercase tracking-[0.3em]" />
-              <span className="text-white/20 text-sm font-mono tracking-[0.3em]">— 01</span>
+              <span className="text-foreground/20 text-sm font-mono tracking-[0.3em]">— 01</span>
             </motion.div>
 
             <motion.h1
               initial={{ opacity: 0, y: 80 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-              className="font-heading text-[clamp(2.5rem,7vw,8rem)] font-extrabold text-white leading-[0.88] tracking-[-0.03em]"
+              className="font-heading text-[clamp(2.5rem,7vw,8rem)] font-extrabold text-foreground leading-[0.88] tracking-[-0.03em]"
               data-testid="text-creative-headline"
             >
               Where <span className="font-display italic text-primary">brand</span>
               <br />
               thinking
               <br />
-              <span className="text-white/30">begins.</span>
+              <span className="text-foreground/20">begins.</span>
             </motion.h1>
 
             <motion.p
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.9 }}
-              className="mt-10 text-white/40 text-sm leading-relaxed max-w-md"
+              className="mt-10 text-muted-foreground text-sm leading-relaxed max-w-md"
             >
               Communication built for mass media platforms. Every idea
-              shaped by brand context, audience behaviour, and medium.
+              shaped by brand context, audience behaviour and medium.
             </motion.p>
           </div>
 
           {/* Right — vertical capabilities list */}
           <div className="lg:col-span-5 flex flex-col justify-end">
-            <div className="border-l border-white/[0.06] pl-8">
+            <div className="border-l border-border/30 pl-8">
               {capabilities.map((cap, i) => (
                 <motion.div
                   key={cap}
                   initial={{ opacity: 0, x: 30 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.8 + i * 0.1, duration: 0.6 }}
-                  className="py-3 border-b border-white/[0.04] last:border-0 group"
+                  className="py-3 border-b border-border/20 last:border-0 group"
                 >
                   <div className="flex items-center gap-4">
                     <span className="text-primary/30 text-xs font-mono font-bold group-hover:text-primary/60 transition-colors">
                       {String(i + 1).padStart(2, "0")}
                     </span>
-                    <span className="text-white/40 text-sm font-medium group-hover:text-white/80 transition-colors duration-300">
+                    <span className="text-muted-foreground text-sm font-medium group-hover:text-foreground transition-colors duration-300">
                       {cap}
                     </span>
                   </div>
@@ -136,8 +139,8 @@ function CreativeHero() {
 function CapabilitiesSection() {
   const capabilities = [
     { num: "01", title: "Brand Positioning & Strategy", desc: "Developing clear brand positioning that differentiates in crowded markets and resonates with target audiences." },
-    { num: "02", title: "Campaign Ideation", desc: "ATL and integrated campaign concepts designed for maximum recall across print, outdoor, and large-format media." },
-    { num: "03", title: "Print & Mass-Media Creative", desc: "Newspaper, outdoor, and large-format creative designed to communicate quickly and retain recall at scale." },
+    { num: "02", title: "Campaign Ideation", desc: "ATL and integrated campaign concepts designed for maximum recall across print, outdoor and large-format media." },
+    { num: "03", title: "Print & Mass-Media Creative", desc: "Newspaper, outdoor and large-format creative designed to communicate quickly and retain recall at scale." },
     { num: "04", title: "Long-term Brand Narratives", desc: "Building cohesive brand stories that maintain consistency across platforms over extended time periods." },
     { num: "05", title: "Visual Identity Design", desc: "Creating distinctive visual systems that maintain coherence across all brand touchpoints and media formats." },
     { num: "06", title: "Communication Design", desc: "Crafting messages optimized for clarity and impact in high-reach, fast-consumption media environments." },
@@ -215,12 +218,12 @@ function MassVisibilitySection() {
               </div>
             </FadeIn>
             <SplitTextReveal
-              text="Creative for newspapers, outdoor, and large-format media requires clarity, restraint, and precision."
+              text="Creative for newspapers, outdoor and large-format media requires clarity, restraint and precision."
               className="font-heading text-3xl md:text-4xl lg:text-5xl font-extrabold text-white leading-[1.1] tracking-[-0.02em]"
             />
             <FadeIn delay={0.4}>
               <p className="mt-10 text-white/40 text-base leading-[1.8] max-w-2xl">
-                Our work is designed to communicate quickly, retain recall, and remain consistent
+                Our work is designed to communicate quickly, retain recall and remain consistent
                 across high-reach platforms. Every piece of creative goes through a rigorous
                 evaluation process to ensure it performs at scale.
               </p>

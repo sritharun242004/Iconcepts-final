@@ -5,7 +5,6 @@ import {
   FadeIn,
   SplitTextReveal,
   GlitchText,
-  FilmGrain,
   SignatureOrbit,
 } from "@/components/animations";
 import { BTL_SERVICES, SIGNATURE_ORBIT_TEXT } from "@/lib/constants";
@@ -28,17 +27,21 @@ function BTLHero() {
   return (
     <section
       ref={containerRef}
-      className="relative min-h-[50vh] lg:min-h-[65vh] bg-[#0A0C14] overflow-hidden flex items-center"
+      className="relative min-h-[50vh] lg:min-h-[65vh] bg-[#F8F8F8] overflow-hidden flex items-center"
       data-testid="section-btl-hero"
     >
-      <FilmGrain opacity={0.04} />
+      {/* Subtle grid texture */}
+      <div className="absolute inset-0 pointer-events-none" style={{
+        backgroundImage: "linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px)",
+        backgroundSize: "80px 80px"
+      }} />
       <div className="absolute top-[11%] right-[3%] z-[2] scale-[0.6] md:scale-[0.73] lg:scale-100 origin-top-right">
         <SignatureOrbit
           text={SIGNATURE_ORBIT_TEXT}
           size={120}
           progress={scrollYProgress}
-          minOpacity={0.05}
-          maxOpacity={0.12}
+          minOpacity={0.06}
+          maxOpacity={0.18}
         />
       </div>
 
@@ -50,7 +53,7 @@ function BTLHero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3 + i * 0.06, duration: 0.8 }}
-            className="absolute font-heading font-extrabold text-white/[0.025] whitespace-nowrap"
+            className="absolute font-heading font-extrabold text-foreground/[0.04] whitespace-nowrap"
             style={{
               top: `${8 + (i * 37) % 85}%`,
               left: `${5 + (i * 53) % 90}%`,
@@ -65,10 +68,10 @@ function BTLHero() {
 
       {/* Grid lines */}
       <div className="absolute inset-0 pointer-events-none hidden lg:block">
-        <div className="absolute top-[20%] left-0 w-full h-[1px] bg-white/[0.03]" />
-        <div className="absolute top-[80%] left-0 w-full h-[1px] bg-white/[0.03]" />
-        <div className="absolute top-0 left-[15%] w-[1px] h-full bg-white/[0.03]" />
-        <div className="absolute top-0 right-[15%] w-[1px] h-full bg-white/[0.03]" />
+        <div className="absolute top-[20%] left-0 w-full h-[1px] bg-foreground/[0.04]" />
+        <div className="absolute top-[80%] left-0 w-full h-[1px] bg-foreground/[0.04]" />
+        <div className="absolute top-0 left-[15%] w-[1px] h-full bg-foreground/[0.04]" />
+        <div className="absolute top-0 right-[15%] w-[1px] h-full bg-foreground/[0.04]" />
       </div>
 
       <div className="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-12 w-full pt-32 sm:pt-36 lg:pt-28">
@@ -81,7 +84,7 @@ function BTLHero() {
         >
           <div className="w-8 h-[1px] bg-primary" />
           <GlitchText text="BTL" className="text-primary text-sm font-mono font-bold uppercase tracking-[0.3em]" />
-          <span className="text-white/20 text-sm font-mono tracking-[0.3em]">— 03</span>
+          <span className="text-foreground/20 text-sm font-mono tracking-[0.3em]">— 03</span>
         </motion.div>
 
         {/* Centered hero content */}
@@ -90,22 +93,22 @@ function BTLHero() {
             initial={{ opacity: 0, y: 80 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="font-heading text-[clamp(2rem,6vw,5.5rem)] font-extrabold text-white leading-[0.9] tracking-[-0.03em]"
+            className="font-heading text-[clamp(2rem,6vw,5.5rem)] font-extrabold text-foreground leading-[0.9] tracking-[-0.03em]"
             data-testid="text-btl-headline"
           >
             Execution that <span className="font-display italic text-primary">reaches</span>
             <br />
-            <span className="text-white/30">the ground.</span>
+            <span className="text-foreground/20">the ground.</span>
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.9 }}
-            className="mt-6 text-white/40 text-sm leading-relaxed max-w-md mx-auto"
+            className="mt-6 text-muted-foreground text-sm leading-relaxed max-w-md mx-auto"
           >
             Structured BTL initiatives designed to engage audiences directly —
-            with planning, logistics, permissions, and coordination handled end-to-end.
+            with planning, logistics, permissions and coordination handled end-to-end.
           </motion.p>
         </div>
       </div>

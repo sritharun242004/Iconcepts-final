@@ -9,7 +9,6 @@ import {
   MagneticElement,
   Parallax,
   GlitchText,
-  FilmGrain,
   TiltCard,
   SignatureOrbit,
 } from "@/components/animations";
@@ -26,24 +25,28 @@ function AboutHero() {
   return (
     <section
       ref={containerRef}
-      className="relative min-h-[85vh] lg:h-screen flex flex-col justify-end bg-[#0A0C14] overflow-hidden"
+      className="relative min-h-[85vh] lg:h-screen flex flex-col justify-end bg-[#F8F8F8] overflow-hidden"
       data-testid="section-about-hero"
     >
-      <FilmGrain opacity={0.04} />
+      {/* Subtle grid texture */}
+      <div className="absolute inset-0 pointer-events-none" style={{
+        backgroundImage: "linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px)",
+        backgroundSize: "80px 80px"
+      }} />
       <div className="absolute top-[12%] right-[3%] z-[2] scale-[0.6] md:scale-[0.73] lg:scale-100 origin-top-right">
         <SignatureOrbit
           text={SIGNATURE_ORBIT_TEXT}
           size={120}
           progress={scrollYProgress}
-          minOpacity={0.05}
-          maxOpacity={0.12}
+          minOpacity={0.06}
+          maxOpacity={0.18}
         />
       </div>
       <div className="absolute inset-0">
-        <div className="absolute top-0 left-[50%] w-[1px] h-full bg-white/[0.03]" />
+        <div className="absolute top-0 left-[50%] w-[1px] h-full bg-foreground/[0.04]" />
         <div className="absolute top-[15%] left-[25%] w-[1px] h-[40vh] bg-gradient-to-b from-transparent via-primary/10 to-transparent" />
         <motion.div
-          className="absolute -bottom-[20%] -right-[10%] w-[50vw] h-[50vw] rounded-full border border-white/[0.03]"
+          className="absolute -bottom-[20%] -right-[10%] w-[50vw] h-[50vw] rounded-full border border-foreground/[0.04]"
           animate={{ rotate: 360 }}
           transition={{ duration: 100, repeat: Infinity, ease: "linear" }}
         />
@@ -55,7 +58,7 @@ function AboutHero() {
             initial={{ opacity: 0, y: 80 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="font-heading text-[clamp(2.5rem,7vw,8rem)] font-extrabold text-white leading-[0.88] tracking-[-0.03em] max-w-5xl"
+            className="font-heading text-[clamp(2.5rem,7vw,8rem)] font-extrabold text-foreground leading-[0.88] tracking-[-0.03em] max-w-5xl"
             data-testid="text-about-headline"
           >
             Built on
@@ -64,14 +67,14 @@ function AboutHero() {
             <br />
             Driven by
             <br />
-            <span className="text-white/30">discipline.</span>
+            <span className="text-foreground/20">discipline.</span>
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.9 }}
-            className="mt-10 text-white/40 text-sm leading-relaxed max-w-md"
+            className="mt-10 text-muted-foreground text-sm leading-relaxed max-w-md"
           >
             Founded with a clear focus: to serve brands that require structured and result oriented advertising solutions.
           </motion.p>
@@ -103,23 +106,23 @@ function StorySection() {
             <FadeIn delay={0.4}>
               <p className="mt-10 text-muted-foreground text-base leading-[1.8]">
                 Our growth has been shaped by years of managing large media spends,
-                multi-market campaigns, and complex execution requirements. We operate
+                multi-market campaigns and complex execution requirements. We operate
                 with the understanding that advertising at scale demands systems,
-                compliance, and accountability.
+                compliance and accountability.
               </p>
             </FadeIn>
             <FadeIn delay={0.5}>
               <p className="mt-6 text-muted-foreground text-base leading-[1.8]">
-                iConcepts has evolved alongside the advertising landscape - <strong>serving 40+ satisfied clients over 19+ years.</strong> Our strength lies in combining proven fundamentals with cost-effective planning and a focused, results-driven approach..
+                iConcepts has evolved alongside the advertising landscape - <strong>serving 40+ satisfied clients over 19+ years.</strong> Our strength lies in combining proven fundamentals with cost-effective planning and a focused, results-driven approach...
               </p>
             </FadeIn>
           </div>
           <div className="lg:col-span-4">
             <StaggerContainer staggerDelay={0.12} className="space-y-0">
               {[
-                { phase: "01", title: "Agency Established", desc: "Built with a focus on structured advertising solutions add since 2007" },
-                { phase: "02", title: "INS Accreditation", desc: "Through consistent hard work and structured growth, we earned INS accreditation in 2010." },
-                { phase: "03", title: "DIPR Empanelment", desc: "Rather than resting on our laurels, we strengthened our efforts and successfully obtained DIPR empanelment in 2022." },
+                { phase: "01", title: "Agency Established", desc: "Built with a focus on structured advertising solutions, since 2007" },
+                { phase: "02", title: "INS Accreditation", desc: "Through consistent hard work and structured growth, we earned INS accreditation in 2010" },
+                { phase: "03", title: "DIPR Empanelment", desc: "Rather than resting on our laurels, we strengthened our efforts and successfully obtained DIPR empanelment in 2022" },
                 { phase: "04", title: "40+ Clients", desc: "Serving India's leading brands across industries" },
               ].map((item, i) => (
                 <StaggerItem key={i}>
@@ -368,8 +371,8 @@ function CertificationSection() {
 
 function HowWeWorkSection() {
   const steps = [
-    { title: "Understand", desc: "Deep dive into your brand, market, and objectives" },
-    { title: "Strategize", desc: "Develop a comprehensive plan aligned with your goals" },
+    { title: "Understand", desc: "Deep dive into your brand, market and objectives" },
+    { title: "Strategise", desc: "Develop a comprehensive plan aligned with your goals" },
     { title: "Create", desc: "Craft compelling creative that resonates at scale" },
     { title: "Execute", desc: "Implement across media with precision and accountability" },
   ];

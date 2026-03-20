@@ -47,10 +47,14 @@ function HeroSection() {
   return (
     <section
       ref={containerRef}
-      className="relative lg:h-screen flex flex-col justify-end overflow-hidden bg-[#0A0C14]"
+      className="relative lg:h-screen flex flex-col justify-end overflow-hidden bg-[#F8F8F8]"
       data-testid="section-hero"
     >
-      <FilmGrain opacity={0.04} />
+      {/* Subtle grid texture */}
+      <div className="absolute inset-0 pointer-events-none" style={{
+        backgroundImage: "linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px)",
+        backgroundSize: "80px 80px"
+      }} />
 
       {/* Signature accreditation orbit */}
       <div className="absolute top-[12%] right-[3%] z-[2] scale-[0.6] md:scale-[0.73] lg:scale-100 origin-top-right">
@@ -58,8 +62,8 @@ function HeroSection() {
           text={SIGNATURE_ORBIT_TEXT}
           size={120}
           progress={scrollYProgress}
-          minOpacity={0.05}
-          maxOpacity={0.12}
+          minOpacity={0.06}
+          maxOpacity={0.18}
         />
       </div>
 
@@ -70,7 +74,7 @@ function HeroSection() {
         <div className="flex items-end justify-between gap-8 max-w-[1400px] mx-auto">
           <div className="flex-1">
             <h1
-              className="font-heading text-[clamp(2.5rem,8vw,8rem)] font-extrabold text-white leading-[0.88] tracking-[-0.03em]"
+              className="font-heading text-[clamp(2.5rem,8vw,8rem)] font-extrabold text-foreground leading-[0.88] tracking-[-0.03em]"
               data-testid="text-hero-headline"
             >
               <motion.span
@@ -86,7 +90,7 @@ function HeroSection() {
                 transition={{ delay: 1.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               ><span className="font-display italic text-primary">brands</span> that</motion.span>
               <motion.span
-                className="block text-white/30"
+                className="block text-foreground/20"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1.3, duration: 0.8 }}
@@ -106,8 +110,8 @@ function HeroSection() {
             transition={{ delay: 1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="hidden md:flex flex-col items-end gap-6 lg:gap-8 pb-4 max-w-[240px] lg:max-w-[280px]"
           >
-            <p className="text-white/40 text-sm leading-relaxed text-right" data-testid="text-hero-description">
-              A 360° advertising & brand building agency. Creative, media releases, BTL/Outdoor activities and event execution — integrated under one roof.
+            <p className="text-muted-foreground text-sm leading-relaxed text-right" data-testid="text-hero-description">
+              A 360° advertising and brand building agency. Creative, media releases, BTL/Outdoor activities and event execution — integrated under one roof.
             </p>
             <MagneticElement strength={0.2}>
               <motion.button
@@ -129,20 +133,18 @@ function HeroSection() {
               transition={{ delay: 1.1, duration: 0.6 }}
               className="flex flex-col items-end gap-2"
             >
-              <span className="text-white/20 text-[11px] font-mono uppercase tracking-[0.15em] leading-tight text-right">
+              <span className="text-foreground/30 text-[11px] font-mono uppercase tracking-[0.15em] leading-tight text-right">
                 Certified &amp; Empanelled
               </span>
               <div className="flex items-center gap-3">
-                <div className="group relative w-32 h-28 lg:w-36 lg:h-32 rounded-xl overflow-hidden border border-white/[0.08] hover:border-white/20 transition-all duration-500 cursor-default">
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/[0.06] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="group relative w-32 h-28 lg:w-36 lg:h-32 rounded-xl overflow-hidden border border-border/40 hover:border-border/70 transition-all duration-500 cursor-default bg-white shadow-sm">
                   <img
                     src="/logos/ins-badge.png"
                     alt="INS Accredited Advertising Agency"
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="group relative w-14 h-14 lg:w-16 lg:h-16 rounded-xl overflow-hidden border border-white/[0.08] hover:border-white/20 transition-all duration-500 cursor-default">
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/[0.06] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="group relative w-14 h-14 lg:w-16 lg:h-16 rounded-xl overflow-hidden border border-border/40 hover:border-border/70 transition-all duration-500 cursor-default bg-white shadow-sm">
                   <img
                     src="/logos/dipr-badge.png"
                     alt="DIPR Government of Tamil Nadu"
@@ -160,8 +162,8 @@ function HeroSection() {
           transition={{ delay: 1.2 }}
           className="md:hidden mt-6 sm:mt-8"
         >
-          <p className="text-white/40 text-sm leading-relaxed max-w-sm mb-6">
-          A 360° advertising & brand building agency. Creative, media releases, BTL/Outdoor activities and event execution — integrated under one roof.
+          <p className="text-muted-foreground text-sm leading-relaxed max-w-sm mb-6">
+          A 360° advertising and brand building agency. Creative, media releases, BTL/Outdoor activities and event execution — integrated under one roof.
           </p>
           <div className="flex items-center gap-4">
             <MagneticElement strength={0.2}>
@@ -179,10 +181,10 @@ function HeroSection() {
 
             {/* Accreditation badges — mobile */}
             <div className="flex items-center gap-2">
-              <div className="w-11 h-11 rounded-lg overflow-hidden border border-white/[0.08]">
+              <div className="w-11 h-11 rounded-lg overflow-hidden border border-border/40 bg-white shadow-sm">
                 <img src="/logos/ins-badge.png" alt="INS Accredited" className="w-full h-full object-cover" />
               </div>
-              <div className="w-11 h-11 rounded-lg overflow-hidden border border-white/[0.08]">
+              <div className="w-11 h-11 rounded-lg overflow-hidden border border-border/40 bg-white shadow-sm">
                 <img src="/logos/dipr-badge.png" alt="DIPR Empanelled" className="w-full h-full object-cover" />
               </div>
             </div>
@@ -200,7 +202,7 @@ function HeroSection() {
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
         >
-          <ArrowDown className="w-4 h-4 text-white/20" />
+          <ArrowDown className="w-4 h-4 text-foreground/20" />
         </motion.div>
       </motion.div>
     </section>
@@ -333,13 +335,13 @@ function ManifestoSection() {
           <div className="lg:col-span-7">
             <FadeIn delay={0.1}>
               <p className="font-display italic text-3xl md:text-4xl lg:text-[2.8rem] text-foreground leading-[1.25] tracking-[-0.01em]">
-                iConcepts is a full-service advertising agency delivering integrated solutions across <span className="text-primary">creative, media, and on-ground execution.</span>
+                iConcepts is a full-service advertising agency delivering integrated solutions across <span className="text-primary">creative, media and on-ground execution.</span>
               </p>
             </FadeIn>
             <FadeIn delay={0.4}>
               <p className="mt-10 text-muted-foreground text-base lg:text-lg leading-[1.8] max-w-2xl" data-testid="text-intro-paragraph">
                 With a strong foundation in ATL advertising and national-level media planning,
-                we help brands achieve visibility at scale — with clarity, compliance, and control.
+                we help brands achieve visibility at scale — with clarity, compliance and control.
                 Over 19 years, iConcepts has worked with 40+ satisfied clients across industries.
               </p>
             </FadeIn>
@@ -399,7 +401,7 @@ function DepartmentsSection() {
       num: "01",
       title: "Creative",
       subtitle: "Where Brand Thinking Begins",
-      description: "Brand strategy, campaign ideation, and communication design built for mass media and long-term brand recall.",
+      description: "Brand strategy, campaign ideation and communication design built for mass media and long-term brand recall.",
       href: "/creative",
     },
     {
@@ -420,7 +422,7 @@ function DepartmentsSection() {
       num: "04",
       title: "Events",
       subtitle: "Experiences That Move People",
-      description: "Product launches, corporate events, and public engagements conceptualised and executed with full accountability.",
+      description: "Product launches, corporate events and public engagements conceptualised and executed with full accountability.",
       href: "/events",
     },
   ];
@@ -534,15 +536,15 @@ function ClientsSection() {
               </div>
             </FadeIn>
             <SplitTextReveal
-              text="40+ satisfied clients across real estate, healthcare, FMCG, and infrastructure."
+              text="40+ satisfied clients across real estate, healthcare, FMCG and infrastructure."
               className="font-heading text-3xl md:text-4xl lg:text-5xl font-extrabold text-foreground leading-[1.1] tracking-[-0.02em]"
             />
           </div>
           <div className="lg:col-span-4 flex justify-center lg:justify-end">
             <FadeIn delay={0.3}>
               <p className="text-muted-foreground text-sm leading-relaxed max-w-sm lg:text-right">
-                Partnerships built on trust, transparency, and consistent
-                delivery across print, outdoor, and digital campaigns.
+                Partnerships built on trust, transparency and consistent
+                delivery across print, outdoor and digital campaigns.
               </p>
             </FadeIn>
           </div>
@@ -553,20 +555,35 @@ function ClientsSection() {
         {CLIENT_PARTNER_SEGMENTS.map((segment, rowIndex) => {
           const isStaticSegment = segment.title === "Banking" || segment.logos.length === 1;
 
-          const logoCards = segment.logos.map((logo, logoIndex) => (
-            <div
-              key={`${segment.title}-${logoIndex}`}
-              className="mx-2 w-[180px] sm:w-[200px] h-[90px] rounded-xl bg-white border border-border/30 flex items-center justify-center px-4 flex-shrink-0"
-              data-testid={`client-logo-${rowIndex}-${logoIndex}`}
-            >
-              <img
-                src={logo}
-                alt={`${segment.title} partner logo ${logoIndex + 1}`}
-                className="max-h-12 sm:max-h-14 max-w-full object-contain"
-                loading="lazy"
-              />
-            </div>
-          ));
+          const logoCards = segment.logos.map((logo, logoIndex) => {
+            const isTextEntry = logo.startsWith("text:");
+            const textLabel = isTextEntry ? logo.slice(5) : null;
+            const isRealEstate = segment.title === "Real Estate";
+            const logoSize = isRealEstate
+              ? "max-h-24 sm:max-h-28"
+              : "max-h-16 sm:max-h-20";
+            const cardHeight = isRealEstate ? "h-[115px]" : "h-[90px]";
+            return (
+              <div
+                key={`${segment.title}-${logoIndex}`}
+                className={`mx-2 w-[180px] sm:w-[200px] ${cardHeight} rounded-xl bg-white border border-border/30 flex items-center justify-center px-4 flex-shrink-0`}
+                data-testid={`client-logo-${rowIndex}-${logoIndex}`}
+              >
+                {isTextEntry ? (
+                  <span className="font-heading text-xl font-extrabold text-foreground tracking-tight">
+                    {textLabel}
+                  </span>
+                ) : (
+                  <img
+                    src={logo}
+                    alt={`${segment.title} partner logo ${logoIndex + 1}`}
+                    className={`max-w-full object-contain ${logoSize}`}
+                    loading="lazy"
+                  />
+                )}
+              </div>
+            );
+          });
 
           return (
             <FadeIn key={segment.title} delay={rowIndex * 0.08}>
@@ -613,13 +630,13 @@ function AccreditationSection() {
               </div>
             </FadeIn>
             <SplitTextReveal
-              text="Certified to Operate at the Highest Level"
+              text="Certified to operate at the highest level"
               className="font-heading text-3xl md:text-4xl lg:text-5xl font-extrabold text-white leading-[1.05] tracking-[-0.02em]"
             />
             <FadeIn delay={0.4}>
               <p className="mt-10 text-white/40 text-base leading-[1.8] max-w-lg" data-testid="text-accreditation-description">
                 iConcepts holds INS Accreditation and DIPR Empanelment (Tamil Nadu) —
-                granted only to agencies meeting stringent financial, operational,
+                granted only to agencies meeting stringent financial, operational
                 and compliance standards.
               </p>
             </FadeIn>

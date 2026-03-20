@@ -76,7 +76,7 @@ export function Navbar() {
                           ? "text-primary"
                           : isScrolled
                           ? "text-foreground/50 hover:text-foreground"
-                          : "text-white/50 hover:text-white"
+                          : "text-foreground/50 hover:text-foreground"
                       }`}
                       data-testid={`link-nav-${link.label.toLowerCase().replace(/\s+/g, "-")}`}
                     >
@@ -111,9 +111,7 @@ export function Navbar() {
               className={`md:hidden relative z-[110] p-2 transition-colors ${
                 isMobileOpen
                   ? "text-white"
-                  : isScrolled
-                  ? "text-foreground"
-                  : "text-white"
+                  : "text-foreground"
               }`}
               data-testid="button-mobile-menu"
             >

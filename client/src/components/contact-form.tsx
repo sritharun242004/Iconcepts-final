@@ -159,7 +159,7 @@ export function ContactForm() {
             <textarea
               {...form.register("requirement")}
               rows={4}
-              placeholder="Tell us about your project, campaign, or requirement..."
+              placeholder="Tell us about your project, campaign or requirement..."
               className="w-full px-0 py-4 bg-transparent border-0 border-b-2 border-border/50 text-sm focus:outline-none focus:border-primary transition-colors resize-none placeholder:text-muted-foreground/40"
               data-testid="input-requirement"
             />

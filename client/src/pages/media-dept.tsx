@@ -9,7 +9,6 @@ import {
   StaggerItem,
   MagneticElement,
   GlitchText,
-  FilmGrain,
   TiltCard,
   SignatureOrbit,
 } from "@/components/animations";
@@ -33,25 +32,29 @@ function MediaHero() {
   return (
     <section
       ref={containerRef}
-      className="relative min-h-[85vh] lg:min-h-screen bg-[#0A0C14] overflow-hidden"
+      className="relative min-h-[85vh] lg:min-h-screen bg-[#F8F8F8] overflow-hidden"
       data-testid="section-media-hero"
     >
-      <FilmGrain opacity={0.04} />
+      {/* Subtle grid texture */}
+      <div className="absolute inset-0 pointer-events-none" style={{
+        backgroundImage: "linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px)",
+        backgroundSize: "80px 80px"
+      }} />
       <div className="absolute top-[11%] right-[3%] z-[2] scale-[0.6] md:scale-[0.73] lg:scale-100 origin-top-right">
         <SignatureOrbit
           text={SIGNATURE_ORBIT_TEXT}
           size={120}
           progress={scrollYProgress}
-          minOpacity={0.05}
-          maxOpacity={0.12}
+          minOpacity={0.06}
+          maxOpacity={0.18}
         />
       </div>
 
       {/* Newspaper-style column rules */}
       <div className="absolute inset-0 hidden lg:block pointer-events-none">
-        <div className="absolute top-0 left-[25%] w-[1px] h-full bg-white/[0.03]" />
-        <div className="absolute top-0 left-[50%] w-[1px] h-full bg-white/[0.03]" />
-        <div className="absolute top-0 left-[75%] w-[1px] h-full bg-white/[0.03]" />
+        <div className="absolute top-0 left-[25%] w-[1px] h-full bg-foreground/[0.04]" />
+        <div className="absolute top-0 left-[50%] w-[1px] h-full bg-foreground/[0.04]" />
+        <div className="absolute top-0 left-[75%] w-[1px] h-full bg-foreground/[0.04]" />
       </div>
 
       {/* Large background "02" */}
@@ -61,7 +64,7 @@ function MediaHero() {
         transition={{ delay: 0.3, duration: 1 }}
         className="absolute bottom-[5%] right-[5%] pointer-events-none select-none"
       >
-        <span className="font-mono text-[clamp(8rem,20vw,18rem)] font-bold text-white/[0.02] leading-none">02</span>
+        <span className="font-mono text-[clamp(8rem,20vw,18rem)] font-bold text-foreground/[0.03] leading-none">02</span>
       </motion.div>
 
       <div className="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-12 pt-28 sm:pt-32 lg:pt-40 pb-12 sm:pb-16 lg:pb-24">
@@ -70,40 +73,40 @@ function MediaHero() {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="flex items-center justify-between border-b border-white/[0.06] pb-4 mb-12 lg:mb-20"
+          className="flex items-center justify-between border-b border-border/30 pb-4 mb-12 lg:mb-20"
         >
           <div className="flex items-center gap-4">
             <div className="w-12 h-[1px] bg-primary" />
             <GlitchText text="Media Department" className="text-primary text-sm font-mono font-bold uppercase tracking-[0.3em]" />
           </div>
-          <span className="text-white/15 text-xs font-mono tracking-[0.3em] hidden sm:block">INS ACCREDITED · EST. 2012</span>
+          <span className="text-foreground/20 text-xs font-mono tracking-[0.3em] hidden sm:block">INS ACCREDITED · EST. 2012</span>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-0">
           {/* Main headline — spans 8 cols */}
-          <div className="lg:col-span-8 lg:pr-12 lg:border-r lg:border-white/[0.06]">
+          <div className="lg:col-span-8 lg:pr-12 lg:border-r lg:border-border/30">
             <motion.h1
               initial={{ opacity: 0, y: 80 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-              className="font-heading text-[clamp(2.5rem,7vw,7rem)] font-extrabold text-white leading-[0.9] tracking-[-0.03em]"
+              className="font-heading text-[clamp(2.5rem,7vw,7rem)] font-extrabold text-foreground leading-[0.9] tracking-[-0.03em]"
               data-testid="text-media-headline"
             >
               Planned
               <br />
               <span className="font-display italic text-primary">visibility,</span>
               <br />
-              not <span className="text-white/30">guesswork.</span>
+              not <span className="text-foreground/20">guesswork.</span>
             </motion.h1>
 
             <motion.p
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.9 }}
-              className="mt-10 text-white/40 text-sm leading-relaxed max-w-lg"
+              className="mt-10 text-muted-foreground text-sm leading-relaxed max-w-lg"
             >
               National-level media planning and buying with strong emphasis
-              on reach efficiency, cost optimisation, and compliance.
+              on reach efficiency, cost optimisation and compliance.
             </motion.p>
 
             {/* Horizontal stat bar */}
@@ -116,8 +119,8 @@ function MediaHero() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.7 }}
             >
-              <p className="font-display italic text-white/30 text-lg lg:text-xl leading-[1.5] mb-8">
-                "Every rupee of media spend is tracked, verified, and optimized for maximum reach."
+              <p className="font-display italic text-muted-foreground text-lg lg:text-xl leading-[1.5] mb-8">
+                "Every rupee of media spend is tracked, verified and optimised for maximum reach."
               </p>
               <div className="space-y-4">
                 {["Print & Newspaper", "Outdoor & Hoardings", "TV & Radio", "Digital Planning"].map((item, i) => (
@@ -126,10 +129,10 @@ function MediaHero() {
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.9 + i * 0.08 }}
-                    className="flex items-center gap-3 py-2 border-b border-white/[0.04] last:border-0"
+                    className="flex items-center gap-3 py-2 border-b border-border/20 last:border-0"
                   >
                     <span className="w-1.5 h-1.5 rounded-full bg-primary/40" />
-                    <span className="text-white/40 text-xs font-mono uppercase tracking-[0.1em]">{item}</span>
+                    <span className="text-muted-foreground text-xs font-mono uppercase tracking-[0.1em]">{item}</span>
                   </motion.div>
                 ))}
               </div>
@@ -413,7 +416,7 @@ function MediaServicesSection() {
               <p className="mt-10 text-muted-foreground text-base leading-[1.8]">
                 iConcepts has executed numerous high-visibility newspaper campaigns,
                 including full front-page advertisements. These placements demand
-                certified access, negotiation capability, and precise coordination.
+                certified access, negotiation capability and precise coordination.
                 Newspaper advertising remains our core specialization.
               </p>
             </FadeIn>
@@ -456,7 +459,7 @@ function MediaServicesSection() {
                 </h3>
                 <p className="text-white/40 text-sm leading-[1.8] mb-10">
                   As an INS Accredited agency, we ensure transparent billing, verified
-                  placements, and adherence to industry regulations. This protects brand
+                  placements and adherence to industry regulations. This protects brand
                   investments while maintaining trust across all stakeholders.
                 </p>
 
@@ -494,7 +497,7 @@ function MediaApproachSection() {
               </div>
             </FadeIn>
             <SplitTextReveal
-              text="Each plan is built on market insight, experience, and structured evaluation."
+              text="Each plan is built on market insight, experience and structured evaluation."
               className="font-heading text-3xl md:text-4xl lg:text-5xl font-extrabold text-white leading-[1.1] tracking-[-0.02em]"
             />
             <FadeIn delay={0.4}>

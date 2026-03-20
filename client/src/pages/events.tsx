@@ -8,7 +8,6 @@ import {
   StaggerItem,
   MagneticElement,
   GlitchText,
-  FilmGrain,
   SignatureOrbit,
   Marquee,
 } from "@/components/animations";
@@ -40,25 +39,29 @@ function EventsHero() {
   return (
     <section
       ref={containerRef}
-      className="relative min-h-screen bg-[#0A0C14] overflow-hidden flex items-center"
+      className="relative min-h-screen bg-[#F8F8F8] overflow-hidden flex items-center"
       data-testid="section-events-hero"
     >
-      <FilmGrain opacity={0.04} />
+      {/* Subtle grid texture */}
+      <div className="absolute inset-0 pointer-events-none" style={{
+        backgroundImage: "linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px)",
+        backgroundSize: "80px 80px"
+      }} />
       <div className="absolute top-[11%] right-[3%] z-[2] scale-[0.6] md:scale-[0.73] lg:scale-100 origin-top-right">
         <SignatureOrbit
           text={SIGNATURE_ORBIT_TEXT}
           size={120}
           progress={scrollYProgress}
-          minOpacity={0.05}
-          maxOpacity={0.12}
+          minOpacity={0.06}
+          maxOpacity={0.18}
         />
       </div>
 
       {/* Grid lines */}
       <div className="absolute inset-0 pointer-events-none hidden lg:block">
-        <div className="absolute top-[20%] left-0 w-full h-[1px] bg-white/[0.03]" />
-        <div className="absolute top-0 left-[15%] w-[1px] h-full bg-white/[0.03]" />
-        <div className="absolute top-0 right-[15%] w-[1px] h-full bg-white/[0.03]" />
+        <div className="absolute top-[20%] left-0 w-full h-[1px] bg-foreground/[0.04]" />
+        <div className="absolute top-0 left-[15%] w-[1px] h-full bg-foreground/[0.04]" />
+        <div className="absolute top-0 right-[15%] w-[1px] h-full bg-foreground/[0.04]" />
       </div>
 
       <div className="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-12 w-full flex flex-col items-center justify-center pb-20">
@@ -67,19 +70,19 @@ function EventsHero() {
             initial={{ opacity: 0, y: 80 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="font-heading text-[clamp(2rem,6vw,5.5rem)] font-extrabold text-white leading-[0.9] tracking-[-0.03em]"
+            className="font-heading text-[clamp(2rem,6vw,5.5rem)] font-extrabold text-foreground leading-[0.9] tracking-[-0.03em]"
             data-testid="text-events-headline"
           >
             Experiences that <span className="font-display italic text-primary">move</span>
             <br />
-            <span className="text-white/30">people.</span>
+            <span className="text-foreground/20">people.</span>
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.9 }}
-            className="mt-6 text-white/40 text-sm leading-relaxed max-w-md mx-auto"
+            className="mt-6 text-muted-foreground text-sm leading-relaxed max-w-md mx-auto"
           >
             From product launches to large-scale public engagements — we conceptualise
             and execute events that build lasting brand presence with full accountability.
@@ -90,17 +93,17 @@ function EventsHero() {
             transition={{ delay: 1.1 }}
             className="mt-8 flex justify-center"
           >
-            <img src="/propfair-logo.png" alt="Propfair" className="h-10 w-auto object-contain" />
+            <img src="/propfair-logo.png" alt="Propfair" className="h-10 object-contain" />
           </motion.div>
         </div>
       </div>
 
       {/* Marquee strip pinned to bottom */}
-      <div className="absolute bottom-0 left-0 w-full overflow-hidden border-t border-white/[0.06] py-4 bg-[#0A0C14]/80 backdrop-blur-sm">
+      <div className="absolute bottom-0 left-0 w-full overflow-hidden border-t border-border/30 py-4 bg-[#F8F8F8]/90 backdrop-blur-sm">
         <Marquee speed="slow">
           <div className="flex items-center gap-0 whitespace-nowrap">
             {marqueeWords.map((word, i) => (
-              <span key={i} className="text-white/20 font-mono text-xs font-bold tracking-[0.25em] uppercase px-6 flex items-center gap-6">
+              <span key={i} className="text-foreground/20 font-mono text-xs font-bold tracking-[0.25em] uppercase px-6 flex items-center gap-6">
                 {word}
                 <span className="w-1 h-1 rounded-full bg-primary/30" />
               </span>
@@ -150,11 +153,7 @@ function PropfairSection() {
             <FadeIn delay={0.3}>
               <p className="mt-8 text-white/40 text-base leading-[1.8]">
                 Our dedicated property expo vertical{" "}
-                <img
-                  src="/propfair-logo.png"
-                  alt="Propfair"
-                  className="inline-block h-7 w-auto object-contain align-middle mx-1"
-                />{" "}
+                <span className="font-heading font-extrabold text-white">Propfair</span>{" "}
                 — a platform that bridges real estate developers with serious
                 home buyers. Since inception, we have successfully hosted over
                 14 editions across India's most dynamic real estate markets,
@@ -231,17 +230,17 @@ function EventsExperiencesSection() {
             <FadeIn delay={0.3}>
               <p className="mt-10 text-white/40 text-base leading-[1.8]">
                 We conceptualise and execute events that strengthen brand presence —
-                including launches, corporate events, and public engagements — ensuring
+                including launches, corporate events and public engagements — ensuring
                 alignment with overall brand and media strategy.
               </p>
             </FadeIn>
 
             <StaggerContainer className="mt-12 space-y-0 border-t border-white/[0.06]" staggerDelay={0.1}>
               {[
-                "Product launches & unveilings",
-                "Corporate events & conferences",
-                "Public engagements & community events",
-                "Brand experience activations",
+                "Product Launches & Unveilings",
+                "Corporate Events & Conferences",
+                "Public Engagements & Community Events",
+                "Brand Experience Activations",
               ].map((item, i) => (
                 <StaggerItem key={i}>
                   <motion.div
@@ -272,7 +271,7 @@ function EventsExperiencesSection() {
                 </h3>
                 <p className="text-white/40 text-sm leading-[1.8] mb-10">
                   Every on-ground activity is supported by clear timelines, coordination
-                  frameworks, and execution oversight — ensuring consistency, safety,
+                  frameworks and execution oversight — ensuring consistency, safety
                   and accountability across all environments.
                 </p>
 

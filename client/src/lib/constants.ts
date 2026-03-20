@@ -8,7 +8,7 @@ export const TESTIMONIALS = [
   },
   {
     quote:
-      "Professional, reliable, and results-driven. iConcepts delivered our campaigns with precision and accountability across all channels.",
+      "Professional, reliable and results-driven, iConcepts delivered our campaigns with precision and accountability across all channels.",
     author: "Chairman",
     title: "",
     company: "Apollo Group of Colleges",
@@ -84,6 +84,9 @@ export const CLIENT_PARTNER_SEGMENTS: { title: string; logos: string[] }[] = [
       "/logos/partners/Web-logo-13.png",
       "/logos/partners/Web-logo-15.png",
       "/logos/partners/Web-logo-07.png",
+      "/logos/partners/casagrand.png",
+      "/logos/partners/G square.png",
+      "text:Propfair",
       "/logos/partners/Web-logo-11.png",
       "/logos/partners/Web-logo-17.png",
       "/logos/partners/Web-logo-16.png",
@@ -98,7 +101,7 @@ export const CLIENT_PARTNER_SEGMENTS: { title: string; logos: string[] }[] = [
     logos: ["/logos/partners/Infra-logo-06.jpg"],
   },
   {
-    title: "Health Care",
+    title: "Healthcare",
     logos: [
       "/logos/partners/Health-care-04.jpg",
       "/logos/partners/Health-care-01.jpg",
@@ -143,7 +146,7 @@ export type MediaAssetShowcaseItem = {
 
 export const MEDIA_ASSET_SHOWCASE: MediaAssetShowcaseItem[] = [
   {
-    title: "Baashyaam Enchanted - Full-Page Release",
+    title: "Baashyaam Enchanted Full-Page Release",
     client: "Baashyaam",
     channel: "The Hindu",
     format: "Print Ad",
