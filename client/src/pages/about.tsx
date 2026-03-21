@@ -10,6 +10,7 @@ import {
   MagneticElement,
   Parallax,
   GlitchText,
+  FilmGrain,
   TiltCard,
   SignatureOrbit,
 } from "@/components/animations";
@@ -165,7 +166,7 @@ const TEAM_MEMBERS = [
   {
     name: "Prakash",
     designation: "Founder",
-    about: "Prakash holds a Postgraduate Degree in Public Administration from the University of Madras and a Law degree from Tamil Nadu Dr. Ambedkar Law University, with over three decades of experience in advertising. He spent 10 years working with leading advertising agencies in New Delhi, gaining extensive industry exposure. Since 1992, he headed Chaya Advertising Private Limited, and later founded I Concepts in 2007. A versatile leader with a keen eye for creativity and detail, Prakash is a seasoned professional with wide exposure in handling clients across various industries, including cement, steel, retail, real estate, banking, and government organizations. Prakash currently leads I Concepts as its Founder and Director, driving the company's vision and creative excellence.",
+    about: "Prakash holds a Postgraduate Degree in Public Administration from the University of Madras and a Law degree from Tamil Nadu Dr. Ambedkar Law University, with over three decades of experience in advertising. He spent 10 years working with leading advertising agencies in New Delhi, gaining extensive industry exposure. Since 1992, he headed Chaya Advertising Private Limited, and later founded I Concepts in 2007. A versatile leader with a keen eye for creativity and detail, Prakash is a seasoned professional with wide exposure in handling clients across various industries, including cement, steel, retail, real estate, banking, and government organisations. Prakash currently leads I Concepts as its Founder and Director, driving the company's vision and creative excellence.",
     isFounder: true,
     initials: "P",
     image: "/team/prakash.jpg",
@@ -181,7 +182,7 @@ const TEAM_MEMBERS = [
   {
     name: "Parvatham",
     designation: "Media Manager",
-    about: "Parvatham is a Postgraduate in Mass Communication with over 3 decades of experience in the advertising industry, specializing in media operations and media planning. She has extensive experience handling Government and PSU clients such as TNPL, TIDEL, Powerfin, Railways, ICF, NLC, and NHAI, as well as banking sector clients including Indian Bank and City Union Bank. Currently independently managing Real Estate clients and maintaining strong professional relationships with publications, radio stations, and television channels. Known for effective media strategy, campaign planning, and strong public relations within the media industry.",
+    about: "Parvatham is a Postgraduate in Mass Communication with over 3 decades of experience in the advertising industry, specialising in media operations and media planning. She has extensive experience handling Government and PSU clients such as TNPL, TIDEL, Powerfin, Railways, ICF, NLC, and NHAI, as well as banking sector clients including Indian Bank and City Union Bank. Currently independently managing Real Estate clients and maintaining strong professional relationships with publications, radio stations, and television channels. Known for effective media strategy, campaign planning, and strong public relations within the media industry.",
     isFounder: false,
     initials: "PA",
     image: "/team/parvatham.jpg",

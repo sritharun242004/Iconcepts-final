@@ -62,18 +62,26 @@ export function Trophy3D({ className }: { className?: string }) {
       return m;
     };
 
-    let y = -4.5;
+    let y = -5.0;
 
-    // ── Base: 3 flat disc-like cylinders (straight sides) ─
-    const baseTiers: [number, number, number][] = [
-      [1.50, 1.55, 0.40],   // top-r, bot-r, height
-      [1.30, 1.35, 0.35],
-      [1.10, 1.15, 0.30],
-    ];
-    for (const [rT, rB, h] of baseTiers) {
-      add(new THREE.CylinderGeometry(rT, rB, h, 64), gold, y + h / 2);
-      y += h;
-    }
+    // ── Base: spool shape (wide → narrow → wide) ────────
+    // Bottom drum — wide
+    add(new THREE.CylinderGeometry(1.50, 1.50, 0.25, 64), gold, y + 0.125);
+    y += 0.25;
+    add(new THREE.CylinderGeometry(1.53, 1.53, 0.05, 64), darkGold, y + 0.025);
+    y += 0.05;
+
+    // Middle band — narrow (the waist)
+    add(new THREE.CylinderGeometry(1.15, 1.15, 0.55, 64), gold, y + 0.275);
+    y += 0.55;
+    add(new THREE.CylinderGeometry(1.18, 1.18, 0.05, 64), darkGold, y + 0.025);
+    y += 0.05;
+
+    // Top band — wide again (matches bottom)
+    add(new THREE.CylinderGeometry(1.48, 1.48, 0.22, 64), gold, y + 0.11);
+    y += 0.22;
+    add(new THREE.CylinderGeometry(1.51, 1.51, 0.05, 64), darkGold, y + 0.025);
+    y += 0.05;
 
     // ── Black pedestal ───────────────────────────────────
     const pedH = 1.10;
@@ -106,16 +114,21 @@ export function Trophy3D({ className }: { className?: string }) {
 
     y += pedH;
 
-    // ── Small flat discs above pedestal ───────────────────
-    const upperTiers: [number, number, number][] = [
-      [0.72, 0.78, 0.12],
-      [0.56, 0.62, 0.10],
-      [0.40, 0.46, 0.08],
-    ];
-    for (const [rT, rB, h] of upperTiers) {
-      add(new THREE.CylinderGeometry(rT, rB, h, 48), gold, y + h / 2);
-      y += h;
-    }
+    // ── Small stepped discs above pedestal ────────────────
+    add(new THREE.CylinderGeometry(0.85, 0.85, 0.14, 48), gold, y + 0.07);
+    y += 0.14;
+    add(new THREE.CylinderGeometry(0.88, 0.88, 0.04, 48), darkGold, y + 0.02);
+    y += 0.04;
+
+    add(new THREE.CylinderGeometry(0.68, 0.68, 0.12, 48), gold, y + 0.06);
+    y += 0.12;
+    add(new THREE.CylinderGeometry(0.71, 0.71, 0.04, 48), darkGold, y + 0.02);
+    y += 0.04;
+
+    add(new THREE.CylinderGeometry(0.50, 0.50, 0.10, 48), gold, y + 0.05);
+    y += 0.10;
+    add(new THREE.CylinderGeometry(0.53, 0.53, 0.04, 48), darkGold, y + 0.02);
+    y += 0.04;
 
     // ── Connecting knob ──────────────────────────────────
     add(new THREE.CylinderGeometry(0.15, 0.22, 0.14, 32), gold, y + 0.07);
@@ -170,15 +183,101 @@ export function Trophy3D({ className }: { className?: string }) {
     controls.enableZoom = false;
     controls.enablePan = false;
     controls.autoRotate = true;
-    controls.autoRotateSpeed = 2.0;
+    controls.autoRotateSpeed = 0.8;
     // Lock vertical — only allow left/right rotation
     controls.minPolarAngle = Math.PI / 2;
     controls.maxPolarAngle = Math.PI / 2;
 
+    // ── Sparkle texture ────────────────────────────────────
+    const sparkleCanvas = document.createElement("canvas");
+    sparkleCanvas.width = 64;
+    sparkleCanvas.height = 64;
+    const ctx = sparkleCanvas.getContext("2d")!;
+    const grad = ctx.createRadialGradient(32, 32, 0, 32, 32, 32);
+    grad.addColorStop(0, "rgba(255, 255, 200, 1)");
+    grad.addColorStop(0.1, "rgba(255, 230, 120, 1)");
+    grad.addColorStop(0.3, "rgba(255, 180, 50, 0.8)");
+    grad.addColorStop(0.6, "rgba(255, 120, 20, 0.3)");
+    grad.addColorStop(1, "rgba(255, 60, 0, 0)");
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, 64, 64);
+    const sparkleTexture = new THREE.CanvasTexture(sparkleCanvas);
+
+    // ── Rising spiral flame (starts bright at bottom, fades at top) ──
+    const FLAME_COUNT = 500;
+    const flameGeo = new THREE.BufferGeometry();
+    const flamePos = new Float32Array(FLAME_COUNT * 3);
+    const flameCol = new Float32Array(FLAME_COUNT * 3);
+    const flameSizes = new Float32Array(FLAME_COUNT);
+    const flameAlphas = new Float32Array(FLAME_COUNT);
+    const flameSpd = new Float32Array(FLAME_COUNT);
+    const flameOff = new Float32Array(FLAME_COUNT);
+
+    for (let i = 0; i < FLAME_COUNT; i++) {
+      flameOff[i] = Math.random() * Math.PI * 2;
+      flameSpd[i] = 0.15 + Math.random() * 0.45;
+      flameSizes[i] = 0.04 + Math.random() * 0.10;
+      flameAlphas[i] = 1.0;
+    }
+    flameGeo.setAttribute("position", new THREE.BufferAttribute(flamePos, 3));
+    flameGeo.setAttribute("color", new THREE.BufferAttribute(flameCol, 3));
+
+    const flameMat = new THREE.PointsMaterial({
+      size: 0.12,
+      map: sparkleTexture,
+      vertexColors: true,
+      transparent: true,
+      opacity: 0.8,
+      blending: THREE.AdditiveBlending,
+      depthWrite: false,
+      sizeAttenuation: true,
+    });
+    const flameParticles = new THREE.Points(flameGeo, flameMat);
+    scene.add(flameParticles);
+
+
+    // Trophy vertical range
+    const trophyBottom = -5.0;
+    const trophyTop = poleBaseY + 4.5;
+    const trophyHeight = trophyTop - trophyBottom;
+
     // ── Animation ─────────────────────────────────────────
     let raf: number;
+    let clock = 0;
     const animate = () => {
       raf = requestAnimationFrame(animate);
+      clock += 0.016;
+
+      // ── Rising spiral flame — bright at bottom, fades at top ──
+      const fArr = flameGeo.attributes.position.array as Float32Array;
+      const fCol = flameGeo.attributes.color.array as Float32Array;
+      for (let i = 0; i < FLAME_COUNT; i++) {
+        // Each particle rises from bottom to top, then resets
+        const t = ((clock * flameSpd[i] * 0.3 + flameOff[i] * 0.5) % 1);
+        const yPos = trophyBottom + t * trophyHeight;
+        const normalY = t; // 0 = bottom, 1 = top
+
+        // Spiral radius — tight at bottom, expands as it rises, then tightens at very top
+        const radius = 0.4 + normalY * 1.2 + Math.sin(normalY * Math.PI * 2) * 0.3;
+        const spiralTurns = 5;
+        const angle = flameOff[i] + clock * flameSpd[i] * 1.8 + normalY * Math.PI * 2 * spiralTurns;
+
+        fArr[i * 3]     = Math.cos(angle) * radius;
+        fArr[i * 3 + 1] = yPos;
+        fArr[i * 3 + 2] = Math.sin(angle) * radius;
+
+        // Color: bright gold/white at bottom → warm orange → fades to dark at top
+        const fade = 1.0 - normalY * normalY; // quadratic fade
+        const brightness = Math.max(0, fade);
+        fCol[i * 3]     = brightness * (1.0);                    // R stays bright
+        fCol[i * 3 + 1] = brightness * (0.7 - normalY * 0.4);   // G reduces
+        fCol[i * 3 + 2] = brightness * (0.2 - normalY * 0.2);   // B fades fast
+      }
+      flameGeo.attributes.position.needsUpdate = true;
+      flameGeo.attributes.color.needsUpdate = true;
+      flameParticles.position.copy(group.position);
+
+
       controls.update();
       renderer.render(scene, camera);
     };
@@ -186,13 +285,11 @@ export function Trophy3D({ className }: { className?: string }) {
     // ── Font & letters ────────────────────────────────────
     const fontLoader = new FontLoader();
     fontLoader.load("/fonts/helvetiker_bold.typeface.json", (font) => {
-      // Letters bottom-to-top: I, S, R, P
-      // Staggered X offsets + Y rotation + Z tilt for cascading look
       const letters = [
-        { char: "I", dy: poleBaseY + 0.55,  dx: 0,     rotY: 0,     rotZ: 0 },
-        { char: "S", dy: poleBaseY + 1.45,  dx: 0.25,  rotY: 0.30,  rotZ: -0.08 },
-        { char: "R", dy: poleBaseY + 2.35,  dx: -0.20, rotY: -0.22, rotZ: 0.06 },
-        { char: "P", dy: poleBaseY + 3.25,  dx: 0.15,  rotY: 0.25,  rotZ: -0.05 },
+        { char: "I", dy: poleBaseY + 0.48,  dx: 0.00,  rotY: 0.00,   rotZ: 0.00 },
+        { char: "S", dy: poleBaseY + 1.46,  dx: 0.02,  rotY: 0.14,   rotZ: 0.22 },
+        { char: "R", dy: poleBaseY + 2.38,  dx: 0.10,  rotY: 0.06,   rotZ: -0.14 },
+        { char: "P", dy: poleBaseY + 3.46,  dx: 0.00,  rotY: 0.12,   rotZ: 0.26 },
       ];
 
       letters.forEach(({ char, dy, dx, rotY, rotZ }) => {
