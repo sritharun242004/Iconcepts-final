@@ -85,7 +85,7 @@ function AboutHero() {
 
           {/* Right: 3D rotating award trophy */}
           <motion.div
-            className="lg:col-span-5 flex items-center justify-center lg:justify-end"
+            className="lg:col-span-5 flex items-center justify-center lg:justify-start"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.7, duration: 1 }}
@@ -327,6 +327,67 @@ function TeamSection() {
   );
 }
 
+function AwardsSection() {
+  return (
+    <section className="py-16 sm:py-24 lg:py-32 bg-[#FAFAFA]" data-testid="section-awards">
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          <div>
+            <FadeIn>
+              <div className="flex items-center gap-3 mb-8">
+                <div className="w-8 h-[1px] bg-primary" />
+                <GlitchText text="Recognition" className="text-primary text-sm font-mono font-bold uppercase tracking-[0.3em]" />
+              </div>
+            </FadeIn>
+            <SplitTextReveal
+              text="PRSI State Award 2025 — Gold."
+              className="font-heading text-3xl md:text-4xl lg:text-5xl font-extrabold text-foreground leading-[1.1] tracking-[-0.02em]"
+            />
+            <FadeIn delay={0.3}>
+              <p className="mt-8 text-muted-foreground text-base leading-[1.8]">
+                iConcepts was honoured with the Gold Award at the PRSI State Awards 2025,
+                organised by the Public Relations Society of India, Chennai Chapter. The ceremony,
+                held at MMA Hall, Anna Salai, Chennai, recognised outstanding achievements in
+                public relations, corporate communication and advertising across 40+ categories.
+              </p>
+            </FadeIn>
+            <FadeIn delay={0.5}>
+              <p className="mt-4 text-muted-foreground text-base leading-[1.8]">
+                Presided over by Dr. Ajit Pathak (National President, PRSI) and attended by over
+                250 industry professionals, the event presented nearly 115 awards. This recognition
+                affirms iConcepts' commitment to structured, result-oriented advertising and
+                creative excellence across every medium we operate in.
+              </p>
+            </FadeIn>
+            <FadeIn delay={0.7}>
+              <div className="mt-8 flex items-center gap-3">
+                <div className="w-8 h-[1px] bg-primary" />
+                <span className="text-primary text-sm font-mono font-bold uppercase tracking-[0.2em]">Gold Award — Advertising Excellence</span>
+              </div>
+            </FadeIn>
+          </div>
+          <FadeIn delay={0.2}>
+            <div className="relative rounded-2xl overflow-hidden border border-border/50 shadow-lg">
+              <img
+                src="/team/award.jpeg"
+                alt="iConcepts team receiving the PRSI State Gold Award 2025"
+                className="w-full aspect-[4/3] object-cover"
+                loading="lazy"
+              />
+              <div className="absolute left-4 bottom-4 inline-flex items-center gap-2 rounded-full bg-black/60 border border-white/20 px-3 py-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-brand-lime" />
+                <span className="text-white text-[11px] font-mono uppercase tracking-[0.16em]">
+                  PRSI State Awards 2025
+                </span>
+              </div>
+            </div>
+          </FadeIn>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function CertificationSection() {
   return (
     <section className="py-16 sm:py-24 lg:py-32 bg-[#0A0C14]" data-testid="section-certification">
@@ -467,6 +528,7 @@ export default function About() {
       <AboutHero />
       <StorySection />
       <TeamSection />
+      <AwardsSection />
       <CertificationSection />
       <HowWeWorkSection />
       <AboutCTA />
