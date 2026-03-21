@@ -108,11 +108,24 @@ function HeroSection() {
             initial={{ opacity: 0, y: 40, filter: "blur(8px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             transition={{ delay: 1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="hidden md:flex flex-col items-end gap-6 lg:gap-8 pb-4 max-w-[240px] lg:max-w-[280px]"
+            className="hidden md:flex flex-col items-end gap-7 pb-4 max-w-[300px] lg:max-w-[340px]"
           >
+            {/* Quick stats */}
+            <div className="flex items-center gap-5">
+              {[{ val: "19+", label: "Years" }, { val: "40+", label: "Clients" }, { val: "360°", label: "Integrated" }].map(({ val, label }, i) => (
+                <div key={i} className="flex flex-col items-end">
+                  <span className="font-heading text-xl lg:text-2xl font-extrabold text-foreground leading-none">{val}</span>
+                  <span className="text-[9px] font-mono text-foreground/30 uppercase tracking-[0.18em] mt-0.5">{label}</span>
+                </div>
+              ))}
+            </div>
+
+            <div className="w-full h-[1px] bg-border/30" />
+
             <p className="text-muted-foreground text-sm leading-relaxed text-right" data-testid="text-hero-description">
-              A 360° advertising and brand building agency. Creative, media releases, BTL/Outdoor activities and event execution — integrated under one roof.
+              A 360° advertising and brand-building agency offering creative services, media releases, BTL and outdoor activities, and event execution — all integrated under one roof.
             </p>
+
             <MagneticElement strength={0.2}>
               <motion.button
                 onClick={scrollToContact}
@@ -126,33 +139,30 @@ function HeroSection() {
               </motion.button>
             </MagneticElement>
 
-            {/* Accreditation badges */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.1, duration: 0.6 }}
-              className="flex flex-col items-end gap-2"
-            >
-              <span className="text-foreground/30 text-[11px] font-mono uppercase tracking-[0.15em] leading-tight text-right">
+            <div className="w-full h-[1px] bg-border/30" />
+
+            {/* Accreditation badges — uniform size with labels */}
+            <div className="flex flex-col items-end gap-2.5">
+              <span className="text-foreground/30 text-[10px] font-mono uppercase tracking-[0.2em]">
                 Certified &amp; Empanelled
               </span>
               <div className="flex items-center gap-3">
-                <div className="group relative w-32 h-28 lg:w-36 lg:h-32 rounded-xl overflow-hidden border border-border/40 hover:border-border/70 transition-all duration-500 cursor-default bg-white shadow-sm">
-                  <img
-                    src="/logos/ins-badge.png"
-                    alt="INS Accredited Advertising Agency"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="group relative w-14 h-14 lg:w-16 lg:h-16 rounded-xl overflow-hidden border border-border/40 hover:border-border/70 transition-all duration-500 cursor-default bg-white shadow-sm">
-                  <img
-                    src="/logos/dipr-badge.png"
-                    alt="DIPR Government of Tamil Nadu"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
+                {[
+                  { src: "/logos/ins-badge.png",       alt: "INS",       label: "INS",       bg: "bg-white" },
+                  { src: "/logos/dipr-badge.png",      alt: "DIPR",      label: "DIPR",      bg: "bg-white" },
+                  { src: "/logos/Gulf News logo.png",  alt: "Gulf News", label: "Gulf News", bg: "bg-black" },
+                ].map(({ src, alt, label, bg }) => (
+                  <div key={label} className="flex flex-col items-center gap-1.5">
+                    <div className={`w-[60px] h-[60px] lg:w-[68px] lg:h-[68px] rounded-xl border border-border/40 hover:border-border/70 transition-all duration-300 shadow-sm bg-white p-[2px] flex items-center justify-center overflow-hidden`}>
+                      <div className={`w-full h-full rounded-lg overflow-hidden ${bg}`}>
+                        <img src={src} alt={alt} className="w-full h-full object-cover" />
+                      </div>
+                    </div>
+                    <span className="text-[8px] font-mono font-bold uppercase tracking-[0.15em] text-foreground/30">{label}</span>
+                  </div>
+                ))}
               </div>
-            </motion.div>
+            </div>
           </motion.div>
         </div>
 
@@ -163,7 +173,7 @@ function HeroSection() {
           className="md:hidden mt-6 sm:mt-8"
         >
           <p className="text-muted-foreground text-sm leading-relaxed max-w-sm mb-6">
-          A 360° advertising and brand building agency. Creative, media releases, BTL/Outdoor activities and event execution — integrated under one roof.
+          A 360° advertising and brand-building agency offering creative services, media releases, BTL and outdoor activities, and event execution — all integrated under one roof.
           </p>
           <div className="flex items-center gap-4">
             <MagneticElement strength={0.2}>
@@ -181,12 +191,17 @@ function HeroSection() {
 
             {/* Accreditation badges — mobile */}
             <div className="flex items-center gap-2">
-              <div className="w-11 h-11 rounded-lg overflow-hidden border border-border/40 bg-white shadow-sm">
-                <img src="/logos/ins-badge.png" alt="INS Accredited" className="w-full h-full object-cover" />
-              </div>
-              <div className="w-11 h-11 rounded-lg overflow-hidden border border-border/40 bg-white shadow-sm">
-                <img src="/logos/dipr-badge.png" alt="DIPR Empanelled" className="w-full h-full object-cover" />
-              </div>
+              {[
+                { src: "/logos/ins-badge.png",      alt: "INS",       inner: "bg-white" },
+                { src: "/logos/dipr-badge.png",     alt: "DIPR",      inner: "bg-white" },
+                { src: "/logos/Gulf News logo.png", alt: "Gulf News", inner: "bg-black" },
+              ].map(({ src, alt, inner }) => (
+                <div key={alt} className="w-11 h-11 rounded-lg border border-border/40 shadow-sm bg-white p-[2px] flex items-center justify-center overflow-hidden">
+                  <div className={`w-full h-full rounded-md overflow-hidden ${inner}`}>
+                    <img src={src} alt={alt} className="w-full h-full object-cover" />
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </motion.div>
@@ -232,17 +247,17 @@ function ServicesCluster() {
     {
       title: "ATL",
       subtitle: "Above the Line",
-      accent: "bg-white border-border/40 text-foreground/70",
-      cardBg: "bg-white",
-      titleColor: "text-foreground",
+      accent: "bg-white/20 border-white/30 text-white",
+      cardBg: "bg-primary",
+      titleColor: "text-white",
       services: ATL_SERVICES,
     },
     {
       title: "BTL",
       subtitle: "Below the Line",
-      accent: "bg-white/20 border-white/30 text-white",
-      cardBg: "bg-primary",
-      titleColor: "text-white",
+      accent: "bg-white border-border/40 text-foreground/70",
+      cardBg: "bg-white",
+      titleColor: "text-foreground",
       services: BTL_SERVICES,
     },
     {
@@ -635,7 +650,7 @@ function AccreditationSection() {
             />
             <FadeIn delay={0.4}>
               <p className="mt-10 text-white/40 text-base leading-[1.8] max-w-lg" data-testid="text-accreditation-description">
-                iConcepts holds INS Accreditation and DIPR Empanelment (Tamil Nadu) —
+                iConcepts holds INS Accreditation, DIPR Empanelment (Tamil Nadu) and Gulf News Certification —
                 granted only to agencies meeting stringent financial, operational
                 and compliance standards.
               </p>
@@ -644,43 +659,74 @@ function AccreditationSection() {
 
           <div>
             <FadeIn direction="left" delay={0.2}>
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <TiltCard tiltStrength={12}>
                   <motion.div
-                    className="bg-white/[0.04] backdrop-blur-sm rounded-2xl p-8 lg:p-10 border border-white/[0.06]"
+                    className="bg-white/[0.04] backdrop-blur-sm rounded-2xl p-6 lg:p-8 border border-white/[0.06]"
                     whileHover={{ y: -6, borderColor: "rgba(194, 24, 24, 0.2)" }}
                     transition={{ duration: 0.4 }}
                   >
-                    <div className="w-32 h-24 lg:w-40 lg:h-28 rounded-xl overflow-hidden border border-white/[0.14] mb-6">
-                      <img
-                        src="/logos/ins-badge.png"
-                        alt="INS Accredited Advertising Agency"
-                        className="w-full h-full object-cover"
-                        loading="lazy"
-                      />
+                    {/* Desktop: image on top */}
+                    <div className="hidden sm:block w-full h-20 lg:h-24 rounded-xl overflow-hidden border border-white/[0.14] mb-6">
+                      <img src="/logos/ins-badge.png" alt="INS Accredited Advertising Agency" className="w-full h-full object-cover" loading="lazy" />
                     </div>
-                    <GlitchText text="Accredited" className="text-primary text-sm font-mono font-bold uppercase tracking-[0.3em] mb-6" />
-                    <h4 className="font-heading text-4xl lg:text-5xl font-extrabold text-white mb-2">INS</h4>
-                    <p className="text-white/30 text-xs leading-relaxed">Indian Newspaper Society verified agency status</p>
+                    {/* Mobile: text left, square image right */}
+                    <div className="flex sm:block items-center gap-4">
+                      <div className="flex-1">
+                        <GlitchText text="Accredited" className="text-primary text-sm font-mono font-bold uppercase tracking-[0.3em] mb-4" />
+                        <h4 className="font-heading text-3xl lg:text-4xl font-extrabold text-white mb-2">INS</h4>
+                        <p className="text-white/30 text-xs leading-relaxed">Indian Newspaper Society verified agency status</p>
+                      </div>
+                      <div className="sm:hidden w-16 h-16 flex-shrink-0 rounded-lg overflow-hidden border border-white/[0.14]">
+                        <img src="/logos/ins-badge.png" alt="INS" className="w-full h-full object-contain" loading="lazy" />
+                      </div>
+                    </div>
                   </motion.div>
                 </TiltCard>
-                <TiltCard tiltStrength={12} className="mt-8">
+                <TiltCard tiltStrength={12} className="sm:mt-8">
                   <motion.div
-                    className="bg-white/[0.04] backdrop-blur-sm rounded-2xl p-8 lg:p-10 border border-white/[0.06]"
+                    className="bg-white/[0.04] backdrop-blur-sm rounded-2xl p-6 lg:p-8 border border-white/[0.06]"
                     whileHover={{ y: -6, borderColor: "rgba(194, 24, 24, 0.2)" }}
                     transition={{ duration: 0.4 }}
                   >
-                    <div className="w-24 h-24 lg:w-28 lg:h-28 rounded-xl overflow-hidden border border-white/[0.14] mb-6">
-                      <img
-                        src="/logos/dipr-badge.png"
-                        alt="DIPR Government of Tamil Nadu"
-                        className="w-full h-full object-cover"
-                        loading="lazy"
-                      />
+                    {/* Desktop: image on top */}
+                    <div className="hidden sm:block w-full h-20 lg:h-24 rounded-xl overflow-hidden border border-white/[0.14] mb-6">
+                      <img src="/logos/dipr-badge.png" alt="DIPR Government of Tamil Nadu" className="w-full h-full object-cover" loading="lazy" />
                     </div>
-                    <GlitchText text="Empanelled" className="text-primary text-sm font-mono font-bold uppercase tracking-[0.3em] mb-6" />
-                    <h4 className="font-heading text-4xl lg:text-5xl font-extrabold text-white mb-2">DIPR</h4>
-                    <p className="text-white/30 text-xs leading-relaxed">Tamil Nadu government empanelled agency</p>
+                    {/* Mobile: text left, square image right */}
+                    <div className="flex sm:block items-center gap-4">
+                      <div className="flex-1">
+                        <GlitchText text="Empanelled" className="text-primary text-sm font-mono font-bold uppercase tracking-[0.3em] mb-4" />
+                        <h4 className="font-heading text-3xl lg:text-4xl font-extrabold text-white mb-2">DIPR</h4>
+                        <p className="text-white/30 text-xs leading-relaxed">Tamil Nadu government empanelled agency</p>
+                      </div>
+                      <div className="sm:hidden w-16 h-16 flex-shrink-0 rounded-lg overflow-hidden border border-white/[0.14]">
+                        <img src="/logos/dipr-badge.png" alt="DIPR" className="w-full h-full object-contain" loading="lazy" />
+                      </div>
+                    </div>
+                  </motion.div>
+                </TiltCard>
+                <TiltCard tiltStrength={12}>
+                  <motion.div
+                    className="bg-white/[0.04] backdrop-blur-sm rounded-2xl p-6 lg:p-8 border border-white/[0.06]"
+                    whileHover={{ y: -6, borderColor: "rgba(194, 24, 24, 0.2)" }}
+                    transition={{ duration: 0.4 }}
+                  >
+                    {/* Desktop: image on top */}
+                    <div className="hidden sm:block w-full h-20 lg:h-24 rounded-xl overflow-hidden border border-white/[0.14] mb-6">
+                      <img src="/logos/Gulf News logo.png" alt="Gulf News Certified" className="w-full h-full object-cover" loading="lazy" />
+                    </div>
+                    {/* Mobile: text left, square image right */}
+                    <div className="flex sm:block items-center gap-4">
+                      <div className="flex-1">
+                        <GlitchText text="Certified" className="text-primary text-sm font-mono font-bold uppercase tracking-[0.3em] mb-4" />
+                        <h4 className="font-heading text-3xl lg:text-4xl font-extrabold text-white mb-2">Gulf News</h4>
+                        <p className="text-white/30 text-xs leading-relaxed">Gulf News certified advertising partner</p>
+                      </div>
+                      <div className="sm:hidden w-16 h-16 flex-shrink-0 rounded-lg overflow-hidden border border-white/[0.14] bg-black">
+                        <img src="/logos/Gulf News logo.png" alt="Gulf News" className="w-full h-full object-contain" loading="lazy" />
+                      </div>
+                    </div>
                   </motion.div>
                 </TiltCard>
               </div>

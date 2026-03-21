@@ -84,7 +84,6 @@ function BTLHero() {
         >
           <div className="w-8 h-[1px] bg-primary" />
           <GlitchText text="BTL" className="text-primary text-sm font-mono font-bold uppercase tracking-[0.3em]" />
-          <span className="text-foreground/20 text-sm font-mono tracking-[0.3em]">— 03</span>
         </motion.div>
 
         {/* Centered hero content */}
@@ -137,7 +136,7 @@ function BTLServicesSection() {
 
         {/* Main BTL Services */}
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 mb-10">
-          {["Outdoor Hoardings", "Bus Branding", "Bus Shelter", "LED Screening", "Digital Truck", "Vehicle Branding"].map((service, i) => (
+          {["Outdoor Hoardings", "Bus Branding", "Bus Shelters", "LED Screening", "Digital Truck", "Vehicle Branding"].map((service, i) => (
             <FadeIn key={service} delay={i * 0.05}>
               <motion.div
                 className="px-4 py-6 bg-white rounded-xl border border-border/40 shadow-sm hover:shadow-lg hover:border-primary/30 transition-all duration-300 cursor-default text-center"
@@ -150,16 +149,6 @@ function BTLServicesSection() {
           ))}
         </div>
 
-        {/* Other BTL Services */}
-        <FadeIn delay={0.3}>
-          <div className="flex flex-wrap gap-2">
-            {BTL_SERVICES.filter(s => !["Hoardings"].includes(s)).map((service) => (
-              <span key={service} className="px-3 py-1.5 text-muted-foreground/60 text-xs font-mono uppercase tracking-[0.1em]">
-                {service}
-              </span>
-            ))}
-          </div>
-        </FadeIn>
       </div>
     </section>
   );
@@ -170,6 +159,22 @@ function BusShelterSection() {
     <section className="py-16 sm:py-24 lg:py-32 bg-white" data-testid="section-bus-shelter">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <FadeIn delay={0.2}>
+            <div className="relative rounded-2xl overflow-hidden border border-border/50 shadow-sm bg-[#0A0C14]">
+              <img
+                src="/media-assets/tata-value-homes-bus-shelter.jpg"
+                alt="Tata Value Homes bus shelter branding campaign"
+                className="w-full aspect-[16/10] object-cover"
+                loading="lazy"
+              />
+              <div className="absolute left-4 bottom-4 inline-flex items-center gap-2 rounded-full bg-black/60 border border-white/20 px-3 py-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-brand-lime" />
+                <span className="text-white text-[11px] font-mono uppercase tracking-[0.16em]">
+                  Live Bus Shelter Campaign
+                </span>
+              </div>
+            </div>
+          </FadeIn>
           <div>
             <FadeIn>
               <div className="flex items-center gap-3 mb-8">
@@ -188,18 +193,48 @@ function BusShelterSection() {
               </p>
             </FadeIn>
           </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function MallActivitySection() {
+  return (
+    <section className="py-16 sm:py-24 lg:py-32 bg-[#FAFAFA]" data-testid="section-mall-activity">
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div>
+            <FadeIn>
+              <div className="flex items-center gap-3 mb-8">
+                <div className="w-8 h-[1px] bg-primary" />
+                <GlitchText text="Mall Activities" className="text-primary text-sm font-mono font-bold uppercase tracking-[0.3em]" />
+              </div>
+            </FadeIn>
+            <SplitTextReveal
+              text="On-ground activations that engage shoppers where they spend."
+              className="font-heading text-3xl md:text-4xl font-extrabold text-foreground leading-[1.1] tracking-[-0.02em]"
+            />
+            <FadeIn delay={0.3}>
+              <p className="mt-8 text-muted-foreground text-base leading-[1.8]">
+                Mall activations place your brand directly in front of high-footfall audiences.
+                From kiosks and experiential setups to product sampling and live demonstrations —
+                we manage end-to-end coordination including mall permissions, logistics and staffing.
+              </p>
+            </FadeIn>
+          </div>
           <FadeIn delay={0.2}>
-            <div className="relative rounded-2xl overflow-hidden border border-border/50 shadow-sm bg-[#0A0C14]">
-              <img
-                src="/media-assets/tata-value-homes-bus-shelter.jpg"
-                alt="Tata Value Homes bus shelter branding campaign"
-                className="w-full aspect-[16/10] object-cover"
-                loading="lazy"
-              />
+            <div className="relative rounded-2xl overflow-hidden border border-border/50 shadow-sm bg-[#0A0C14] aspect-[16/10] flex items-center justify-center">
+              <div className="text-center">
+                <div className="w-16 h-16 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mx-auto mb-4">
+                  <span className="text-white/30 text-2xl font-heading font-bold">M</span>
+                </div>
+                <p className="text-white/20 text-xs font-mono uppercase tracking-[0.2em]">Mall Activity Image</p>
+              </div>
               <div className="absolute left-4 bottom-4 inline-flex items-center gap-2 rounded-full bg-black/60 border border-white/20 px-3 py-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-brand-lime" />
+                <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
                 <span className="text-white text-[11px] font-mono uppercase tracking-[0.16em]">
-                  Live Bus Shelter Campaign
+                  Live Mall Activation
                 </span>
               </div>
             </div>
@@ -309,6 +344,7 @@ export default function BTLEvents() {
       <BTLServicesSection />
       <TruckVideoSection />
       <BusShelterSection />
+      <MallActivitySection />
     </main>
   );
 }

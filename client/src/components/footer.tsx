@@ -99,11 +99,16 @@ export function Footer() {
               <FadeIn delay={0.3}>
                 <h4 className="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-4 font-bold font-mono">Certified</h4>
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="w-10 h-10 rounded-lg overflow-hidden border border-white/[0.1]">
+                  <div className="w-10 h-10 rounded-lg overflow-hidden border border-white/[0.1] bg-white">
                     <img src="/logos/ins-badge.png" alt="INS Accredited" className="w-full h-full object-cover" loading="lazy" />
                   </div>
-                  <div className="w-10 h-10 rounded-lg overflow-hidden border border-white/[0.1]">
+                  <div className="w-10 h-10 rounded-lg overflow-hidden border border-white/[0.1] bg-white">
                     <img src="/logos/dipr-badge.png" alt="DIPR Empanelled" className="w-full h-full object-cover" loading="lazy" />
+                  </div>
+                  <div className="w-10 h-10 rounded-lg border border-white/[0.1] bg-white p-[1px] flex items-center justify-center overflow-hidden">
+                    <div className="w-full h-full rounded-md overflow-hidden bg-black">
+                      <img src="/logos/Gulf News logo.png" alt="Gulf News Certified" className="w-full h-full object-cover" loading="lazy" />
+                    </div>
                   </div>
                 </div>
                 <div className="flex flex-col gap-1.5">
@@ -114,6 +119,10 @@ export function Footer() {
                   <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.15em] text-white/50 font-mono">
                     <span className="w-1.5 h-1.5 rounded-full bg-brand-lime pulse-dot" />
                     DIPR Empanelled
+                  </div>
+                  <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.15em] text-white/50 font-mono">
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary pulse-dot" />
+                    Gulf News Certified
                   </div>
                 </div>
               </FadeIn>

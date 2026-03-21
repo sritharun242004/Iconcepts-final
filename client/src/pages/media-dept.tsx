@@ -417,7 +417,7 @@ function MediaServicesSection() {
                 iConcepts has executed numerous high-visibility newspaper campaigns,
                 including full front-page advertisements. These placements demand
                 certified access, negotiation capability and precise coordination.
-                Newspaper advertising remains our core specialization.
+                Newspaper advertising remains our core specialisation.
               </p>
             </FadeIn>
 
@@ -502,7 +502,7 @@ function MediaApproachSection() {
             />
             <FadeIn delay={0.4}>
               <p className="mt-10 text-white/40 text-base leading-[1.8] max-w-2xl">
-                Every media plan is custom-built to maximize your brand's visibility while
+                Every media plan is custom-built to maximise your brand's visibility while
                 ensuring every rupee works harder. We combine market data with years of
                 on-ground experience to deliver measurable outcomes.
               </p>

@@ -26,7 +26,7 @@ export const ATL_SERVICES = [
   "Newspaper Ads",
   "Magazine Ads",
   "TV Commercials",
-  "Radio Spots",
+  "Radio Jingles",
   "Outdoor & Hoardings",
 ];
 
