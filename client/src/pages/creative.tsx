@@ -19,7 +19,7 @@ function CreativeHero() {
     target: containerRef,
     offset: ["start start", "end start"],
   });
-  const capabilities = ["Brand Strategy", "Campaign Ideation", "Print Design", "Visual Identity", "Communication"];
+  const capabilities = ["Brand Strategy", "Campaign Ideation", "Visual Identity", "Marketing Collateral Design", "Print Ad Design", "Packaging Design & many more"];
 
   return (
     <section
@@ -138,12 +138,12 @@ function CreativeHero() {
 
 function CapabilitiesSection() {
   const capabilities = [
-    { num: "01", title: "Brand Positioning & Strategy", desc: "Developing clear brand positioning that differentiates in crowded markets and resonates with target audiences." },
+    { num: "01", title: "Brand Strategy", desc: "Developing clear brand positioning that differentiates in crowded markets and resonates with target audiences." },
     { num: "02", title: "Campaign Ideation", desc: "ATL and integrated campaign concepts designed for maximum recall across print, outdoor and large-format media." },
-    { num: "03", title: "Print & Mass-Media Creative", desc: "Newspaper, outdoor and large-format creative designed to communicate quickly and retain recall at scale." },
-    { num: "04", title: "Long-term Brand Narratives", desc: "Building cohesive brand stories that maintain consistency across platforms over extended time periods." },
-    { num: "05", title: "Visual Identity Design", desc: "Creating distinctive visual systems that maintain coherence across all brand touchpoints and media formats." },
-    { num: "06", title: "Communication Design", desc: "Crafting messages optimized for clarity and impact in high-reach, fast-consumption media environments." },
+    { num: "03", title: "Visual Identity", desc: "Creating distinctive visual systems that maintain coherence across all brand touchpoints and media formats." },
+    { num: "04", title: "Marketing Collateral Design", desc: "Designing impactful marketing materials that communicate brand value consistently across every touchpoint." },
+    { num: "05", title: "Print Ad Design", desc: "Newspaper, outdoor and large-format creative designed to communicate quickly and retain recall at scale." },
+    { num: "06", title: "Packaging Design & many more", desc: "Crafting packaging and a wide range of brand communication materials that stand out on shelf and in market." },
   ];
 
   return (

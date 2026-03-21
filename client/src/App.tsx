@@ -20,15 +20,9 @@ const NotFound = lazy(() => import("@/pages/not-found"));
 function ScrollToTop() {
   const [location] = useLocation();
   useEffect(() => {
-    if ("scrollRestoration" in history) {
-      history.scrollRestoration = "manual";
-    }
-  }, []);
-  useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const scrollTo = params.get("scrollTo");
     if (scrollTo) {
-      // Remove the query param
       window.history.replaceState({}, "", window.location.pathname);
       setTimeout(() => {
         const el = document.getElementById(scrollTo);
@@ -37,7 +31,9 @@ function ScrollToTop() {
         }
       }, 600);
     } else {
-      window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
+      setTimeout(() => {
+        window.scrollTo({ top: 0, left: 0, behavior: "instant" as ScrollBehavior });
+      }, 50);
     }
   }, [location]);
   return null;

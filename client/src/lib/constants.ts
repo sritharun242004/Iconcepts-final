@@ -40,7 +40,6 @@ export const BTL_SERVICES = [
   "Mall Activities",
   "Hoardings",
   "Lookwalkers",
-  "Sand Art",
   "Banners",
   "Paper Inserts",
   "Airport Activations",

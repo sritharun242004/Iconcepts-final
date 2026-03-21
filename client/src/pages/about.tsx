@@ -1,5 +1,6 @@
 import { motion, useScroll } from "framer-motion";
 import { useRef } from "react";
+import { Trophy3D } from "@/components/trophy3d";
 import { ArrowRight } from "lucide-react";
 import {
   FadeIn,
@@ -53,31 +54,44 @@ function AboutHero() {
       </div>
 
       <div className="relative z-10 px-6 lg:px-12 pb-12 sm:pb-16 lg:pb-24 pt-32 sm:pt-36 lg:pt-0">
-        <div className="max-w-[1400px] mx-auto">
-          <motion.h1
-            initial={{ opacity: 0, y: 80 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="font-heading text-[clamp(2.5rem,7vw,8rem)] font-extrabold text-foreground leading-[0.88] tracking-[-0.03em] max-w-5xl"
-            data-testid="text-about-headline"
-          >
-            Built on
-            <br />
-            <span className="font-display italic text-primary">experience.</span>
-            <br />
-            Driven by
-            <br />
-            <span className="text-foreground/20">discipline.</span>
-          </motion.h1>
+        <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
+          {/* Left: Headline + para */}
+          <div className="lg:col-span-7">
+            <motion.h1
+              initial={{ opacity: 0, y: 80 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 1, ease: [0.16, 1, 0.3, 1] }}
+              className="font-heading text-[clamp(2.5rem,7vw,8rem)] font-extrabold text-foreground leading-[0.88] tracking-[-0.03em] max-w-5xl"
+              data-testid="text-about-headline"
+            >
+              Built on
+              <br />
+              <span className="font-display italic text-primary">experience.</span>
+              <br />
+              Driven by
+              <br />
+              <span className="text-foreground/20">discipline.</span>
+            </motion.h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.9 }}
-            className="mt-10 text-muted-foreground text-sm leading-relaxed max-w-md"
+            <motion.p
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.9 }}
+              className="mt-10 text-muted-foreground text-sm leading-relaxed max-w-md"
+            >
+              Founded with a clear focus: to serve brands that require structured and result oriented advertising solutions.
+            </motion.p>
+          </div>
+
+          {/* Right: 3D rotating award trophy */}
+          <motion.div
+            className="lg:col-span-5 flex items-center justify-center lg:justify-end"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.7, duration: 1 }}
           >
-            Founded with a clear focus: to serve brands that require structured and result oriented advertising solutions.
-          </motion.p>
+            <Trophy3D className="w-[280px] lg:w-[340px] h-[480px] lg:h-[560px]" />
+          </motion.div>
         </div>
       </div>
     </section>
@@ -165,20 +179,20 @@ const TEAM_MEMBERS = [
     image: "/team/geetha-prakash.jpg",
   },
   {
-    name: "P. Umamaheswari",
-    designation: "Client Service Manager",
-    about: "P. Umamaheswari brings 15+ years of experience in Print, Radio, Television, Outdoor & Digital advertising. She possesses extensive expertise in end-to-end client servicing and multi-platform campaign execution. With a deep understanding of the media landscape, she ensures seamless coordination between clients, creative teams, and media partners. Focused on delivering value-driven advertising solutions while building and sustaining long-term client relationships.",
-    isFounder: false,
-    initials: "PU",
-    image: "/team/umamaheswari.jpg",
-  },
-  {
     name: "Parvatham",
     designation: "Media Manager",
     about: "Parvatham is a Postgraduate in Mass Communication with over 3 decades of experience in the advertising industry, specializing in media operations and media planning. She has extensive experience handling Government and PSU clients such as TNPL, TIDEL, Powerfin, Railways, ICF, NLC, and NHAI, as well as banking sector clients including Indian Bank and City Union Bank. Currently independently managing Real Estate clients and maintaining strong professional relationships with publications, radio stations, and television channels. Known for effective media strategy, campaign planning, and strong public relations within the media industry.",
     isFounder: false,
     initials: "PA",
     image: "/team/parvatham.jpg",
+  },
+  {
+    name: "P. Umamaheswari",
+    designation: "Client Service Manager",
+    about: "P. Umamaheswari brings 15+ years of experience in Print, Radio, Television, Outdoor & Digital advertising. She possesses extensive expertise in end-to-end client servicing and multi-platform campaign execution. With a deep understanding of the media landscape, she ensures seamless coordination between clients, creative teams, and media partners. Focused on delivering value-driven advertising solutions while building and sustaining long-term client relationships.",
+    isFounder: false,
+    initials: "PU",
+    image: "/team/umamaheswari.jpg",
   },
   {
     name: "Venkatesh",

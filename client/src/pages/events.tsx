@@ -126,11 +126,16 @@ function PropfairSection() {
             <FadeIn>
               <div className="relative">
                 <div className="absolute -inset-6 bg-primary/5 rounded-3xl blur-2xl" />
-                <div className="flex items-center gap-2 mb-3">
-                  <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-                  <span className="text-primary text-[10px] font-mono font-bold uppercase tracking-[0.3em]">Pan-India Presence</span>
+                <div className="flex items-center justify-between mb-4">
+                  <div>
+                    <div className="flex items-center gap-2 mb-3">
+                      <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+                      <span className="text-primary text-[10px] font-mono font-bold uppercase tracking-[0.3em]">Pan-India Presence</span>
+                    </div>
+                    <p className="text-white/60 text-xs font-mono">14+ Events · 5 Cities · 1 Vision</p>
+                  </div>
+                  <img src="/propfair-logo.png" alt="Propfair" className="h-[60px] object-contain" />
                 </div>
-                <p className="text-white/60 text-xs font-mono mb-4">14+ Events · 5 Cities · 1 Vision</p>
                 <div className="relative rounded-2xl overflow-hidden border border-white/[0.06]">
                   <img
                     src="/propfair-map.jpg"
@@ -153,7 +158,7 @@ function PropfairSection() {
             <FadeIn delay={0.3}>
               <p className="mt-8 text-white/40 text-base leading-[1.8]">
                 Our dedicated property expo vertical{" "}
-                <span className="font-heading font-extrabold text-white">Propfair</span>{" "}
+                <span className="font-heading font-extrabold text-red-500">Propfair</span>{" "}
                 — a platform that bridges real estate developers with serious
                 home buyers. Since inception, we have successfully hosted over
                 14 editions across India's most dynamic real estate markets,

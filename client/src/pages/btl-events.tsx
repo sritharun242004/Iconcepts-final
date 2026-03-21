@@ -20,7 +20,7 @@ function BTLHero() {
   const scatteredWords = [
     "Ad Bike", "Auto Stickers", "Bus Shelter", "Club Activities",
     "Flute Board", "Mall Activities", "Hoardings", "Lookwalkers",
-    "Sand Art", "Banners", "Paper Inserts", "Airport", "Toll",
+    "Banners", "Paper Inserts", "Airport", "Toll",
     "Bus Stickers", "Events", "Activations", "LED Van",
   ];
 
