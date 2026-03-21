@@ -253,14 +253,14 @@ export function Trophy3D({ className }: { className?: string }) {
       const fCol = flameGeo.attributes.color.array as Float32Array;
       for (let i = 0; i < FLAME_COUNT; i++) {
         // Each particle rises from bottom to top, then resets
-        const t = ((clock * flameSpd[i] * 0.3 + flameOff[i] * 0.5) % 1);
+        const t = ((clock * flameSpd[i] * 0.12 + flameOff[i] * 0.5) % 1);
         const yPos = trophyBottom + t * trophyHeight;
         const normalY = t; // 0 = bottom, 1 = top
 
         // Spiral radius — tight at bottom, expands as it rises, then tightens at very top
         const radius = 0.4 + normalY * 1.2 + Math.sin(normalY * Math.PI * 2) * 0.3;
         const spiralTurns = 5;
-        const angle = flameOff[i] + clock * flameSpd[i] * 1.8 + normalY * Math.PI * 2 * spiralTurns;
+        const angle = flameOff[i] + clock * flameSpd[i] * 0.6 + normalY * Math.PI * 2 * spiralTurns;
 
         fArr[i * 3]     = Math.cos(angle) * radius;
         fArr[i * 3 + 1] = yPos;
