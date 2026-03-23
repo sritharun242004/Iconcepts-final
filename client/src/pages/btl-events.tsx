@@ -199,6 +199,55 @@ function BusShelterSection() {
   );
 }
 
+const MALL_IMAGES = [
+  "/Gemini Generated Image.png",
+  "/Gemini Generated Image (1).png",
+];
+
+function MallCarousel() {
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % MALL_IMAGES.length);
+    }, 3000);
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <div className="relative rounded-2xl overflow-hidden border border-border/50 shadow-sm bg-[#0A0C14] aspect-[16/10]">
+      {MALL_IMAGES.map((src, i) => (
+        <motion.img
+          key={src}
+          src={src}
+          alt={`Mall Activity ${i + 1}`}
+          className="absolute inset-0 w-full h-full object-cover"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: i === current ? 1 : 0 }}
+          transition={{ duration: 0.7, ease: "easeInOut" }}
+        />
+      ))}
+      <div className="absolute left-4 bottom-4 inline-flex items-center gap-2 rounded-full bg-black/60 border border-white/20 px-3 py-1.5 z-10">
+        <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+        <span className="text-white text-[11px] font-mono uppercase tracking-[0.16em]">
+          Live Mall Activation
+        </span>
+      </div>
+      <div className="absolute bottom-4 right-4 flex gap-1.5 z-10">
+        {MALL_IMAGES.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setCurrent(i)}
+            className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
+              i === current ? "bg-white scale-125" : "bg-white/30"
+            }`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function MallActivitySection() {
   return (
     <section className="py-16 sm:py-24 lg:py-32 bg-[#FAFAFA]" data-testid="section-mall-activity">
@@ -224,20 +273,7 @@ function MallActivitySection() {
             </FadeIn>
           </div>
           <FadeIn delay={0.2}>
-            <div className="relative rounded-2xl overflow-hidden border border-border/50 shadow-sm bg-[#0A0C14] aspect-[16/10] flex items-center justify-center">
-              <div className="text-center">
-                <div className="w-16 h-16 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mx-auto mb-4">
-                  <span className="text-white/30 text-2xl font-heading font-bold">M</span>
-                </div>
-                <p className="text-white/20 text-xs font-mono uppercase tracking-[0.2em]">Mall Activity Image</p>
-              </div>
-              <div className="absolute left-4 bottom-4 inline-flex items-center gap-2 rounded-full bg-black/60 border border-white/20 px-3 py-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-                <span className="text-white text-[11px] font-mono uppercase tracking-[0.16em]">
-                  Live Mall Activation
-                </span>
-              </div>
-            </div>
+            <MallCarousel />
           </FadeIn>
         </div>
       </div>

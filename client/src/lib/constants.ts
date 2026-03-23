@@ -31,19 +31,12 @@ export const ATL_SERVICES = [
 ];
 
 export const BTL_SERVICES = [
-  "Ad Bike",
-  "Auto Stickers",
-  "Bus Stickers",
-  "Bus Shelter Ads",
-  "Club Activities",
-  "Flute Board",
-  "Mall Activities",
-  "Hoardings",
-  "Lookwalkers",
-  "Banners",
-  "Paper Inserts",
-  "Airport Activations",
-  "Toll Activations",
+  "Outdoor Hoardings",
+  "Bus Branding",
+  "Bus Shelter",
+  "LED Screening",
+  "Digital Truck",
+  "Vehicle Branding",
 ];
 
 export const CREATIVE_SERVICES = [
