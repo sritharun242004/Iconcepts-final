@@ -90,7 +90,7 @@ function HeroSection() {
                 transition={{ delay: 1.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               ><span className="font-display italic text-primary">brands</span> that</motion.span>
               <motion.span
-                className="block text-foreground/20"
+                className="block text-foreground/60"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1.3, duration: 0.8 }}
@@ -256,7 +256,7 @@ function ServicesCluster() {
       title: "BTL",
       subtitle: "Below the Line",
       accent: "bg-white border-border/40 text-foreground/70",
-      cardBg: "bg-white",
+      cardBg: "bg-[#EFEFEF]",
       titleColor: "text-foreground",
       services: BTL_SERVICES,
     },
@@ -303,7 +303,7 @@ function ServicesCluster() {
                       {cluster.title}
                     </span>
                   </div>
-                  <p className={`text-xs font-mono uppercase tracking-[0.15em] mb-6 ${cluster.cardBg === "bg-white" ? "text-muted-foreground" : "text-white/50"}`}>
+                  <p className={`text-xs font-mono uppercase tracking-[0.15em] mb-6 ${cluster.cardBg === "bg-primary" || cluster.cardBg === "bg-[#2A2A2A]" ? "text-white/50" : "text-muted-foreground"}`}>
                     {cluster.subtitle}
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -575,13 +575,13 @@ function ClientsSection() {
             const textLabel = isTextEntry ? logo.slice(5) : null;
             const isRealEstate = segment.title === "Real Estate";
             const logoSize = isRealEstate
-              ? "max-h-24 sm:max-h-28"
-              : "max-h-16 sm:max-h-20";
-            const cardHeight = isRealEstate ? "h-[115px]" : "h-[90px]";
+              ? "max-h-28 sm:max-h-32"
+              : "max-h-20 sm:max-h-24";
+            const cardHeight = isRealEstate ? "h-[140px]" : "h-[110px]";
             return (
               <div
                 key={`${segment.title}-${logoIndex}`}
-                className={`mx-2 w-[180px] sm:w-[200px] ${cardHeight} rounded-xl bg-white border border-border/30 flex items-center justify-center px-4 flex-shrink-0`}
+                className={`mx-2 w-[220px] sm:w-[250px] ${cardHeight} rounded-xl bg-white border border-border/50 flex items-center justify-center px-5 flex-shrink-0`}
                 data-testid={`client-logo-${rowIndex}-${logoIndex}`}
               >
                 {isTextEntry ? (
@@ -604,7 +604,7 @@ function ClientsSection() {
             <FadeIn key={segment.title} delay={rowIndex * 0.08}>
               <div className="space-y-4">
                 <GlitchText text={segment.title} className="text-primary text-sm font-mono font-bold uppercase tracking-[0.3em]" />
-                <div className="rounded-2xl border border-border/40 bg-white/80 px-2 py-3 shadow-sm overflow-hidden">
+                <div className="rounded-2xl border border-border/40 bg-white px-2 py-4 shadow-sm overflow-hidden">
                   {isStaticSegment ? (
                     <div className="flex items-center justify-center w-full">{logoCards}</div>
                   ) : (
@@ -650,7 +650,7 @@ function AccreditationSection() {
             />
             <FadeIn delay={0.4}>
               <p className="mt-10 text-white/40 text-base leading-[1.8] max-w-lg" data-testid="text-accreditation-description">
-                iConcepts holds INS Accreditation, DIPR Empanelment (Tamil Nadu) and Gulf News Certification —
+                iConcepts holds INS Accreditation, DIPR Empanelment (Tamil Nadu) and is the exclusively authorized agency for Gulf News in Tamil Nadu —
                 granted only to agencies meeting stringent financial, operational
                 and compliance standards.
               </p>
@@ -721,7 +721,7 @@ function AccreditationSection() {
                       <div className="flex-1">
                         <GlitchText text="Certified" className="text-primary text-sm font-mono font-bold uppercase tracking-[0.3em] mb-4" />
                         <h4 className="font-heading text-3xl lg:text-4xl font-extrabold text-white mb-2">Gulf News</h4>
-                        <p className="text-white/30 text-xs leading-relaxed">Gulf News certified advertising partner</p>
+                        <p className="text-white/30 text-xs leading-relaxed">Exclusively authorized agency for Gulf News in Tamil Nadu</p>
                       </div>
                       <div className="sm:hidden w-16 h-16 flex-shrink-0 rounded-lg overflow-hidden border border-white/[0.14] bg-black">
                         <img src="/logos/Gulf News logo.png" alt="Gulf News" className="w-full h-full object-contain" loading="lazy" />
