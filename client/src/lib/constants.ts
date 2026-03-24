@@ -84,7 +84,6 @@ export const CLIENT_PARTNER_SEGMENTS: { title: string; logos: string[] }[] = [
       "/logos/partners/Web-logo-16.png",
       "/logos/partners/Web-logo-09.png",
       "/logos/partners/Web-logo-12.png",
-      "/logos/partners/Web-logo-18.png",
       "/logos/partners/Web-logo-10.png",
     ],
   },
@@ -138,34 +137,11 @@ export type MediaAssetShowcaseItem = {
 
 export const MEDIA_ASSET_SHOWCASE: MediaAssetShowcaseItem[] = [
   {
-    title: "Baashyaam Enchanted Full-Page Release",
-    client: "Baashyaam",
-    channel: "The Hindu",
-    format: "Print Ad",
-    image: "/media-assets/baashyam-ad-the-hindu.jpg",
-    proofPdf: "/media-assets/baashyam-ad-the-hindu.pdf",
-  },
-  {
-    title: "Baashyaam Enchanted - Tamil Edition",
-    client: "Baashyaam",
-    channel: "Daily Thanthi",
-    format: "Print Ad",
-    image: "/media-assets/chennai-24-bhas-1.jpg",
-    proofPdf: "/media-assets/chennai-24-bhas-1.pdf",
-  },
-  {
     title: "Kochar Jewel - Premium Positioning Creative",
     client: "Kochar Homes",
     channel: "Regional Print",
     format: "Creative Artwork",
     image: "/media-assets/kochar-jewel-print.jpg",
-  },
-  {
-    title: "Baashyaam Campaign Visual - Times of India",
-    client: "Baashyaam",
-    channel: "Times of India",
-    format: "Print Creative",
-    image: "/media-assets/baashyaam-timesofindia-print.jpg",
   },
   {
     title: "Ocean - Brand Poster Communication",

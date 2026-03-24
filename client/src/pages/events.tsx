@@ -93,7 +93,7 @@ function EventsHero() {
             transition={{ delay: 1.1 }}
             className="mt-8 flex justify-center"
           >
-            <img src="/propfair-logo.png" alt="Propfair" className="h-10 object-contain" />
+            <img src="/propfair-logo.png" alt="Propfair" className="h-20 object-contain" />
           </motion.div>
         </div>
       </div>
@@ -134,7 +134,7 @@ function PropfairSection() {
                     </div>
                     <p className="text-white/60 text-xs font-mono">14+ Events · 5 Cities · 1 Vision</p>
                   </div>
-                  <img src="/propfair-logo.png" alt="Propfair" className="h-[60px] object-contain" />
+                  <img src="/propfair-logo.png" alt="Propfair" className="h-[120px] object-contain" />
                 </div>
                 <div className="relative rounded-2xl overflow-hidden border border-white/[0.06]">
                   <img

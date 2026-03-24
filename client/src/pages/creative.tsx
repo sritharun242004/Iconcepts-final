@@ -1,6 +1,6 @@
 import { motion, useScroll } from "framer-motion";
-import { useRef } from "react";
-import { ArrowRight } from "lucide-react";
+import { useRef, useState, useEffect } from "react";
+import { ArrowRight, ArrowLeft, ChevronLeft, ChevronRight, Expand, ExternalLink } from "lucide-react";
 import {
   FadeIn,
   SplitTextReveal,
@@ -9,9 +9,17 @@ import {
   MagneticElement,
   GlitchText,
   SignatureOrbit,
+  TiltCard,
 } from "@/components/animations";
-import { SIGNATURE_ORBIT_TEXT } from "@/lib/constants";
+import { SIGNATURE_ORBIT_TEXT, MEDIA_ASSET_SHOWCASE } from "@/lib/constants";
 import { scrollToContact } from "@/lib/utils";
+import {
+  type CarouselApi,
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from "@/components/ui/carousel";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 
 function CreativeHero() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -77,7 +85,6 @@ function CreativeHero() {
             >
               <div className="w-12 h-[1px] bg-primary" />
               <GlitchText text="Creative Department" className="text-primary text-sm font-mono font-bold uppercase tracking-[0.3em]" />
-              <span className="text-foreground/20 text-sm font-mono tracking-[0.3em]">— 01</span>
             </motion.div>
 
             <motion.h1
@@ -202,6 +209,207 @@ function CapabilitiesSection() {
   );
 }
 
+function CampaignAssetShowcaseSection() {
+  const [viewerIndex, setViewerIndex] = useState<number | null>(null);
+  const [carouselApi, setCarouselApi] = useState<CarouselApi>();
+  const [canScrollPrev, setCanScrollPrev] = useState(false);
+  const [canScrollNext, setCanScrollNext] = useState(false);
+  const activeAsset = viewerIndex !== null ? MEDIA_ASSET_SHOWCASE[viewerIndex] : null;
+
+  useEffect(() => {
+    if (!carouselApi) return;
+
+    const onSelect = () => {
+      setCanScrollPrev(carouselApi.canScrollPrev());
+      setCanScrollNext(carouselApi.canScrollNext());
+    };
+
+    onSelect();
+    carouselApi.on("select", onSelect);
+    carouselApi.on("reInit", onSelect);
+
+    return () => {
+      carouselApi.off("select", onSelect);
+      carouselApi.off("reInit", onSelect);
+    };
+  }, [carouselApi]);
+
+  const showPrev = () => {
+    setViewerIndex((prev) => {
+      if (prev === null) return null;
+      return prev === 0 ? MEDIA_ASSET_SHOWCASE.length - 1 : prev - 1;
+    });
+  };
+
+  const showNext = () => {
+    setViewerIndex((prev) => {
+      if (prev === null) return null;
+      return prev === MEDIA_ASSET_SHOWCASE.length - 1 ? 0 : prev + 1;
+    });
+  };
+
+  return (
+    <section className="py-12 sm:py-16 bg-[#FAFAFA]" data-testid="section-campaign-asset-showcase">
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
+        <FadeIn>
+          <div className="flex items-center gap-3 mb-3">
+            <div className="w-8 h-[1px] bg-primary" />
+            <GlitchText text="Campaign Asset Showcase" className="text-primary text-sm font-mono font-bold uppercase tracking-[0.3em]" />
+          </div>
+        </FadeIn>
+      </div>
+
+      <div className="relative left-1/2 right-1/2 -mx-[50vw] w-screen mt-5">
+        <div className="relative px-6 lg:px-12">
+          <Carousel opts={{ align: "start" }} setApi={setCarouselApi} className="w-full">
+            <CarouselContent className="pb-2">
+              {MEDIA_ASSET_SHOWCASE.map((asset, i) => (
+                <CarouselItem
+                  key={asset.title}
+                  className="basis-[85%] sm:basis-[58%] lg:basis-[34%] xl:basis-[28%]"
+                >
+                  <TiltCard tiltStrength={6} className="h-full">
+                    <motion.div
+                      className="h-full bg-white rounded-2xl border border-border/50 overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer"
+                      whileHover={{ y: -3, borderColor: "hsl(0 78% 48% / 0.2)" }}
+                      onClick={() => setViewerIndex(i)}
+                      onKeyDown={(event) => {
+                        if (event.key === "Enter" || event.key === " ") {
+                          event.preventDefault();
+                          setViewerIndex(i);
+                        }
+                      }}
+                      role="button"
+                      tabIndex={0}
+                    >
+                      <img
+                        src={asset.image}
+                        alt={asset.title}
+                        className="w-full h-[250px] sm:h-[270px] object-cover"
+                        loading="lazy"
+                      />
+                      <div className="p-5">
+                        <div className="flex items-center justify-between gap-3 mb-3">
+                          <div className="flex items-center gap-2">
+                            <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-mono font-bold uppercase tracking-[0.08em]">
+                              {asset.format}
+                            </span>
+                            <span className="text-muted-foreground text-xs font-mono uppercase tracking-[0.1em]">
+                              {asset.channel}
+                            </span>
+                          </div>
+                          <span className="inline-flex items-center gap-1.5 text-primary text-xs font-mono font-bold uppercase tracking-[0.08em]">
+                            <Expand className="w-3 h-3" />
+                            View
+                          </span>
+                        </div>
+                        <p className="text-foreground text-xl font-heading font-bold leading-[1.35] mb-2">
+                          {asset.title}
+                        </p>
+                        <p className="text-muted-foreground text-xs font-mono uppercase tracking-[0.12em]">
+                          {asset.client}
+                        </p>
+                        {asset.proofPdf ? (
+                          <a
+                            href={asset.proofPdf}
+                            target="_blank"
+                            rel="noreferrer"
+                            onClick={(event) => event.stopPropagation()}
+                            className="inline-flex items-center gap-2 mt-4 text-primary text-xs font-mono font-bold uppercase tracking-[0.14em] hover:underline"
+                          >
+                            Open PDF Proof
+                            <ExternalLink className="w-3 h-3" />
+                          </a>
+                        ) : null}
+                      </div>
+                    </motion.div>
+                  </TiltCard>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+          </Carousel>
+          <button
+            type="button"
+            onClick={() => carouselApi?.scrollPrev()}
+            disabled={!canScrollPrev}
+            aria-label="Previous campaign asset"
+            className="absolute left-5 lg:left-12 top-[42%] -translate-y-1/2 z-10 h-9 w-9 rounded-full border border-border/60 bg-white text-foreground flex items-center justify-center hover:bg-white/95 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+          >
+            <ArrowLeft className="h-4 w-4" />
+          </button>
+          <button
+            type="button"
+            onClick={() => carouselApi?.scrollNext()}
+            disabled={!canScrollNext}
+            aria-label="Next campaign asset"
+            className="absolute right-5 lg:right-12 top-[42%] -translate-y-1/2 z-10 h-9 w-9 rounded-full border border-border/60 bg-white text-foreground flex items-center justify-center hover:bg-white/95 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+          >
+            <ArrowRight className="h-4 w-4" />
+          </button>
+        </div>
+      </div>
+
+      <Dialog open={viewerIndex !== null} onOpenChange={(open) => !open && setViewerIndex(null)}>
+        <DialogContent className="w-screen max-w-none h-[100dvh] max-h-[100dvh] p-0 gap-0 bg-[#0A0C14] border-0 overflow-hidden rounded-none sm:rounded-none">
+          {activeAsset ? (
+            <div className="relative flex h-full min-h-0 flex-col">
+              <div
+                className="relative flex-1 min-h-0 flex items-center justify-center bg-black/30 px-6 sm:px-10 py-4 sm:py-6 cursor-zoom-out"
+                onClick={(event) => {
+                  if (event.target === event.currentTarget) {
+                    setViewerIndex(null);
+                  }
+                }}
+              >
+                <img
+                  src={activeAsset.image}
+                  alt={activeAsset.title}
+                  className="max-h-full max-w-full h-auto w-auto object-contain"
+                />
+                <button
+                  type="button"
+                  onClick={showPrev}
+                  className="absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/50 border border-white/20 text-white flex items-center justify-center hover:bg-black/70 transition-colors"
+                  aria-label="Previous asset"
+                >
+                  <ChevronLeft className="w-5 h-5" />
+                </button>
+                <button
+                  type="button"
+                  onClick={showNext}
+                  className="absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/50 border border-white/20 text-white flex items-center justify-center hover:bg-black/70 transition-colors"
+                  aria-label="Next asset"
+                >
+                  <ChevronRight className="w-5 h-5" />
+                </button>
+              </div>
+              <div className="shrink-0 p-4 sm:p-5 border-t border-white/10 bg-[#11141f]">
+                <p className="text-white text-xl font-heading font-bold mb-2">{activeAsset.title}</p>
+                <div className="flex flex-wrap items-center gap-4 text-white/60 text-xs font-mono uppercase tracking-[0.1em]">
+                  <span>{activeAsset.client}</span>
+                  <span>{activeAsset.channel}</span>
+                  <span>{activeAsset.format}</span>
+                  {activeAsset.proofPdf ? (
+                    <a
+                      href={activeAsset.proofPdf}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-2 text-primary font-bold hover:underline"
+                    >
+                      Open PDF Proof
+                      <ExternalLink className="w-3 h-3" />
+                    </a>
+                  ) : null}
+                </div>
+              </div>
+            </div>
+          ) : null}
+        </DialogContent>
+      </Dialog>
+    </section>
+  );
+}
+
 function MassVisibilitySection() {
   return (
     <section className="py-16 sm:py-24 lg:py-32 bg-[#0A0C14]" data-testid="section-mass-visibility">
@@ -256,6 +464,7 @@ export default function Creative() {
     <main>
       <CreativeHero />
       <CapabilitiesSection />
+      <CampaignAssetShowcaseSection />
       <MassVisibilitySection />
     </main>
   );

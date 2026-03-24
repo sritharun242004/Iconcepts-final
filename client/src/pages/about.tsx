@@ -166,7 +166,7 @@ const TEAM_MEMBERS = [
   {
     name: "Prakash",
     designation: "Founder",
-    about: "Prakash holds a Postgraduate Degree in Public Administration from the University of Madras and a Law degree from Tamil Nadu Dr. Ambedkar Law University, with over three decades of experience in advertising. He spent 10 years working with leading advertising agencies in New Delhi, gaining extensive industry exposure. Since 1992, he headed Chaya Advertising Private Limited, and later founded I Concepts in 2007. A versatile leader with a keen eye for creativity and detail, Prakash is a seasoned professional with wide exposure in handling clients across various industries, including cement, steel, retail, real estate, banking, and government organisations. Prakash currently leads I Concepts as its Founder and Director, driving the company's vision and creative excellence.",
+    about: "Prakash holds a Postgraduate Degree in Public Administration from the University of Madras and a Law Degree from Tamil Nadu Dr. Ambedkar Law University, with over three decades of experience in advertising. He spent 10 years working with leading advertising agencies in New Delhi, gaining extensive industry exposure. Since 1992, he headed Chaya Advertising Private Limited, and later founded I Concepts in 2007. A versatile leader with a keen eye for creativity and detail, Prakash is a seasoned professional with wide exposure in handling clients across various industries, including cement, steel, retail, real estate, banking, and government organisations. Prakash currently leads I Concepts as its Founder and Director, driving the company's vision and creative excellence.",
     isFounder: true,
     initials: "P",
     image: "/team/prakash.jpg",
@@ -177,12 +177,12 @@ const TEAM_MEMBERS = [
     about: "Geetha Prakash is a Postgraduate with a Law degree. She has extensive experience in Retail, Management, Administration, and Accounts and has been leading I Concepts since its inception. She oversees administration and accounts operations for the company. Thanks to her meticulous accounts and cash management practices, I Concepts has maintained a strong financial position with zero borrowings and a healthy surplus cash flow.",
     isFounder: false,
     initials: "GP",
-    image: "/team/geetha-prakash.jpg",
+    image: "/team/geetha.png",
   },
   {
     name: "Parvatham",
     designation: "Media Manager",
-    about: "Parvatham is a Postgraduate in Mass Communication with over 3 decades of experience in the advertising industry, specialising in media operations and media planning. She has extensive experience handling Government and PSU clients such as TNPL, TIDEL, Powerfin, Railways, ICF, NLC, and NHAI, as well as banking sector clients including Indian Bank and City Union Bank. Currently independently managing Real Estate clients and maintaining strong professional relationships with publications, radio stations, and television channels. Known for effective media strategy, campaign planning, and strong public relations within the media industry.",
+    about: "Parvatham is a Postgraduate in Mass Communication. An advertising professional with over 3 decades of experience in the advertising industry and in Newspaper Industry, specializing in media operations and media planning. Parvatham has extensive experience in handling Government and PSU clients such as TNPL, TIDEL, Powerfin, Railways, ICF, NLC, and NHAI, as well as clients from the banking sector including Indian Bank and City Union Bank. Currently Parvatham heads the Media Department of IConcepts independently managing Real Estate clients and maintaining strong professional relationships with publications, radio stations, and television channels. Known for effective media strategy, campaign planning, and strong public relations within the media industry.",
     isFounder: false,
     initials: "PA",
     image: "/team/parvatham.jpg",
@@ -202,6 +202,14 @@ const TEAM_MEMBERS = [
     isFounder: false,
     initials: "VK",
     image: "/team/venkatesh.jpg",
+  },
+  {
+    name: "Suresh",
+    designation: "Accounts Head",
+    about: "A seasoned accounting professional with over 20 years of comprehensive experience across all facets of accounting, auditing, and financial management. Possesses strong expertise in Tally and a proven track record in finalising complete books of accounts with precision and compliance. Known for his unwavering integrity, meticulous approach, and high standards of accuracy, Suresh brings discipline and clarity to financial processes. A dedicated and dependable professional, he consistently ensures efficiency, transparency, and reliability in all accounting functions.",
+    isFounder: false,
+    initials: "S",
+    image: "/team/suresh.png",
   },
 ];
 
@@ -299,7 +307,7 @@ function TeamCard({ member, index }: { member: typeof TEAM_MEMBERS[0]; index: nu
 
 function TeamSection() {
   return (
-    <section className="py-16 sm:py-24 lg:py-32 bg-white" data-testid="section-team">
+    <section className="py-16 sm:py-24 lg:py-32 bg-[#0A0C14]" data-testid="section-team">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
         <FadeIn>
           <div className="flex items-center gap-3 mb-6">
@@ -309,7 +317,7 @@ function TeamSection() {
         </FadeIn>
         <SplitTextReveal
           text="The people behind the work."
-          className="font-heading text-3xl md:text-4xl lg:text-5xl font-extrabold text-foreground leading-[1.1] tracking-[-0.02em] max-w-3xl mb-14"
+          className="font-heading text-3xl md:text-4xl lg:text-5xl font-extrabold text-white leading-[1.1] tracking-[-0.02em] max-w-3xl mb-14"
         />
         {/* Row 1 — 3 cards */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 lg:gap-8 mb-6 lg:mb-8">
@@ -317,8 +325,8 @@ function TeamSection() {
             <TeamCard key={i} member={member} index={i} />
           ))}
         </div>
-        {/* Row 2 — 2 cards centered */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8 sm:w-2/3 mx-auto">
+        {/* Row 2 — 3 cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 lg:gap-8">
           {TEAM_MEMBERS.slice(3).map((member, i) => (
             <TeamCard key={i + 3} member={member} index={i + 3} />
           ))}
@@ -361,6 +369,11 @@ function AwardsSection() {
               </p>
             </FadeIn>
             <FadeIn delay={0.7}>
+              <p className="mt-6 text-muted-foreground text-base leading-[1.8]">
+                Received the 2025 Gold Award from the Public Relations Society of India under the Best Corporate Brochure category.
+              </p>
+            </FadeIn>
+            <FadeIn delay={0.9}>
               <div className="mt-8 flex items-center gap-3">
                 <div className="w-8 h-[1px] bg-primary" />
                 <span className="text-primary text-sm font-mono font-bold uppercase tracking-[0.2em]">Gold Award — Advertising Excellence</span>
