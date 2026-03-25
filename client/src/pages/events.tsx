@@ -444,7 +444,7 @@ function RotaryEventSection() {
                   key={src}
                   src={src}
                   alt={`Adnan Sami Live event photo ${i + 1}`}
-                  className="absolute inset-0 w-full h-full object-contain"
+                  className={`absolute inset-0 w-full h-full object-cover ${i === 3 || i === 4 ? "object-bottom" : "object-center"}`}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: i === current ? 1 : 0 }}
                   transition={{ duration: 0.7, ease: "easeInOut" }}
