@@ -572,9 +572,20 @@ function ClientsSection() {
 
           const logoCards = segment.logos.map((logo, logoIndex) => {
             const isTextEntry = logo.startsWith("text:");
+            const isXsLogo = logo.startsWith("xs:");
+            const isSmallLogo = logo.startsWith("sm:");
+            const isMedLogo = logo.startsWith("md:");
+            const prefixLen = isXsLogo || isSmallLogo || isMedLogo ? 3 : 0;
             const textLabel = isTextEntry ? logo.slice(5) : null;
+            const src = prefixLen ? logo.slice(prefixLen) : logo;
             const isRealEstate = segment.title === "Real Estate";
-            const logoSize = isRealEstate
+            const logoSize = isXsLogo
+              ? "max-h-10 sm:max-h-12"
+              : isSmallLogo
+              ? "max-h-14 sm:max-h-16"
+              : isMedLogo
+              ? "max-h-20 sm:max-h-24"
+              : isRealEstate
               ? "max-h-28 sm:max-h-32"
               : "max-h-20 sm:max-h-24";
             const cardHeight = isRealEstate ? "h-[140px]" : "h-[110px]";
@@ -590,7 +601,7 @@ function ClientsSection() {
                   </span>
                 ) : (
                   <img
-                    src={logo}
+                    src={src}
                     alt={`${segment.title} partner logo ${logoIndex + 1}`}
                     className={`max-w-full object-contain ${logoSize}`}
                     loading="lazy"

@@ -1,6 +1,6 @@
 import { motion, useScroll } from "framer-motion";
-import { useRef } from "react";
-import { ArrowRight, MapPin } from "lucide-react";
+import { useRef, useState, useEffect } from "react";
+import { ArrowRight, MapPin, ChevronLeft, ChevronRight } from "lucide-react";
 import {
   FadeIn,
   SplitTextReveal,
@@ -314,12 +314,189 @@ function EventsExperiencesSection() {
   );
 }
 
+const ROTARY_IMAGES = [
+  "/rotary%20event/6T8A1062.jpg",
+  "/rotary%20event/6T8A1066.JPG",
+  "/rotary%20event/6T8A1070.JPG",
+  "/rotary%20event/6T8A1165.JPG",
+  "/rotary%20event/6T8A1167.JPG",
+  "/rotary%20event/6T8A1418.JPG",
+  "/rotary%20event/6T8A1474.JPG",
+  "/rotary%20event/6T8A1477.JPG",
+  "/rotary%20event/6T8A0959.jpg",
+];
+
+function RotaryEventSection() {
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % ROTARY_IMAGES.length);
+    }, 3500);
+    return () => clearInterval(timer);
+  }, []);
+
+  const prev = () => setCurrent((c) => (c - 1 + ROTARY_IMAGES.length) % ROTARY_IMAGES.length);
+  const next = () => setCurrent((c) => (c + 1) % ROTARY_IMAGES.length);
+
+  return (
+    <section className="py-16 sm:py-24 lg:py-32 bg-[#080A11]" data-testid="section-rotary-event">
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
+
+        {/* Full-width header */}
+        <FadeIn>
+          <div className="flex items-center gap-3 mb-8">
+            <div className="w-8 h-[1px] bg-primary" />
+            <GlitchText text="Live Event" className="text-primary text-sm font-mono font-bold uppercase tracking-[0.3em]" />
+          </div>
+        </FadeIn>
+        <SplitTextReveal
+          text="Adnan Sami Live — an evening to remember."
+          className="font-heading text-3xl md:text-4xl lg:text-5xl font-extrabold text-white leading-[1.1] tracking-[-0.02em] mb-14"
+        />
+
+        {/* Two-column: description+facts left, video right */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+
+          {/* Left: Description + facts */}
+          <div className="lg:col-span-5">
+            <FadeIn delay={0.2}>
+              <p className="text-white/40 text-base leading-[1.8]">
+                A landmark live music evening presented by the Rotary Club of Chennai
+                in association with NAC Jewellers — featuring the legendary Adnan Sami
+                to a packed auditorium. iConcepts executed end-to-end event
+                management, stage production, and on-ground coordination for this
+                high-profile cultural event.
+              </p>
+            </FadeIn>
+
+            <StaggerContainer className="mt-8 space-y-0 border-t border-white/[0.06]" staggerDelay={0.08}>
+              {[
+                { label: "Event Type", value: "Live Music Concert" },
+                { label: "Organiser", value: "Rotary Club of Chennai" },
+                { label: "Title Sponsor", value: "NAC Jewellers" },
+                { label: "Performer", value: "Adnan Sami" },
+              ].map((item, i) => (
+                <StaggerItem key={i}>
+                  <motion.div
+                    className="group flex items-center justify-between py-4 border-b border-white/[0.06]"
+                    whileHover={{ x: 4 }}
+                  >
+                    <span className="text-white/25 text-xs font-mono uppercase tracking-[0.2em]">{item.label}</span>
+                    <span className="text-white/70 text-sm font-medium group-hover:text-white transition-colors duration-300">{item.value}</span>
+                  </motion.div>
+                </StaggerItem>
+              ))}
+            </StaggerContainer>
+          </div>
+
+          {/* Right: Video */}
+          <div className="lg:col-span-7">
+            <FadeIn delay={0.3}>
+              <div className="relative rounded-2xl overflow-hidden border border-white/[0.08] shadow-2xl">
+                <video
+                  className="w-full aspect-video object-cover bg-black"
+                  controls
+                  playsInline
+                  preload="metadata"
+                  poster="/rotary%20event/6T8A1167.JPG"
+                >
+                  <source src="/rotary%20event/WhatsApp%20Video%202026-03-25%20at%2014.24.02.mp4" type="video/mp4" />
+                </video>
+              </div>
+              <p className="mt-3 text-white/20 text-xs font-mono uppercase tracking-[0.2em]">
+                Event highlight reel · Adnan Sami Live, Chennai
+              </p>
+            </FadeIn>
+          </div>
+        </div>
+
+        {/* Bottom: Image carousel gallery */}
+        <FadeIn delay={0.4}>
+          <div className="mt-12 lg:mt-16">
+            <div className="flex items-center justify-between mb-8">
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-[1px] bg-primary" />
+                <GlitchText text="Event Gallery" className="text-primary text-sm font-mono font-bold uppercase tracking-[0.3em]" />
+              </div>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={prev}
+                  className="w-9 h-9 rounded-full border border-white/[0.12] flex items-center justify-center text-white/40 hover:text-white hover:border-white/30 transition-all duration-200"
+                  aria-label="Previous image"
+                >
+                  <ChevronLeft className="w-4 h-4" />
+                </button>
+                <button
+                  onClick={next}
+                  className="w-9 h-9 rounded-full border border-white/[0.12] flex items-center justify-center text-white/40 hover:text-white hover:border-white/30 transition-all duration-200"
+                  aria-label="Next image"
+                >
+                  <ChevronRight className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
+
+            {/* Main featured image */}
+            <div className="relative rounded-2xl overflow-hidden border border-white/[0.06] aspect-[16/6] mb-3">
+              {ROTARY_IMAGES.map((src, i) => (
+                <motion.img
+                  key={src}
+                  src={src}
+                  alt={`Adnan Sami Live event photo ${i + 1}`}
+                  className="absolute inset-0 w-full h-full object-contain"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: i === current ? 1 : 0 }}
+                  transition={{ duration: 0.7, ease: "easeInOut" }}
+                />
+              ))}
+              {/* Dot indicators */}
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+                {ROTARY_IMAGES.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setCurrent(i)}
+                    className={`rounded-full transition-all duration-300 ${
+                      i === current ? "w-5 h-1.5 bg-white" : "w-1.5 h-1.5 bg-white/30"
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
+
+            {/* Thumbnail strip */}
+            <div className="grid grid-cols-9 gap-1.5">
+              {ROTARY_IMAGES.map((src, i) => (
+                <button
+                  key={i}
+                  onClick={() => setCurrent(i)}
+                  className={`rounded-md overflow-hidden aspect-video transition-all duration-200 ${
+                    i === current ? "ring-2 ring-primary ring-offset-1 ring-offset-[#080A11]" : "opacity-40 hover:opacity-70"
+                  }`}
+                >
+                  <img
+                    src={src}
+                    alt={`Thumbnail ${i + 1}`}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                </button>
+              ))}
+            </div>
+          </div>
+        </FadeIn>
+      </div>
+    </section>
+  );
+}
+
 export default function Events() {
   return (
     <main>
       <EventsHero />
       <PropfairSection />
       <EventsExperiencesSection />
+      <RotaryEventSection />
     </main>
   );
 }
