@@ -621,7 +621,7 @@ function ClientsSection() {
                   ) : (
                     <Marquee
                       direction={rowIndex % 2 === 0 ? "left" : "right"}
-                      speed={rowIndex === 0 ? "normal" : "slow"}
+                      speed="slow"
                       className="w-full"
                     >
                       {logoCards}

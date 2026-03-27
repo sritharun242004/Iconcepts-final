@@ -86,12 +86,15 @@ function AboutHero() {
 
           {/* Right: 3D rotating award trophy */}
           <motion.div
-            className="lg:col-span-5 flex items-center justify-center lg:justify-start"
+            className="lg:col-span-5 flex flex-col items-center justify-center lg:justify-start"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.7, duration: 1 }}
           >
-            <Trophy3D className="w-[280px] lg:w-[340px] h-[480px] lg:h-[560px]" />
+            <Trophy3D className="w-[280px] lg:w-[340px] h-[480px] lg:h-[560px] -translate-y-16" />
+            <p className="text-center text-foreground text-sm leading-relaxed max-w-sm -mt-10">
+              Received the <span className="font-bold text-primary">2025 Gold Award</span> from the <span className="font-semibold">Public Relations Society of India</span> under the <span className="font-semibold italic">Best Corporate Brochure</span> category.
+            </p>
           </motion.div>
         </div>
       </div>
@@ -169,7 +172,7 @@ const TEAM_MEMBERS = [
     about: "Prakash holds a Postgraduate Degree in Public Administration from the University of Madras and a Law Degree from Tamil Nadu Dr. Ambedkar Law University, with over three decades of experience in advertising. He spent 10 years working with leading advertising agencies in New Delhi, gaining extensive industry exposure. Since 1992, he headed Chaya Advertising Private Limited, and later founded I Concepts in 2007. A versatile leader with a keen eye for creativity and detail, Prakash is a seasoned professional with wide exposure in handling clients across various industries, including cement, steel, retail, real estate, banking, and government organisations. Prakash currently leads I Concepts as its Founder and Director, driving the company's vision and creative excellence.",
     isFounder: true,
     initials: "P",
-    image: "/team/prakash.jpg",
+    image: "/team/WhatsApp Image 2026-03-24 at 14.16.23.jpeg",
   },
   {
     name: "Geetha Prakash",
@@ -291,7 +294,7 @@ function TeamCard({ member, index }: { member: typeof TEAM_MEMBERS[0]; index: nu
             <h3 className="font-heading text-white text-base font-extrabold leading-tight mb-3">
               {member.name}
             </h3>
-            <p className="text-white/40 text-[11px] leading-relaxed">{member.about}</p>
+            <p className="text-white/90 text-[11px] leading-relaxed">{member.about}</p>
             {member.isFounder && (
               <div className="mt-4 flex items-center gap-2">
                 <div className="w-4 h-[1px] bg-primary" />

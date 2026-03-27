@@ -166,7 +166,7 @@ export default {
         "accordion-up": "accordion-up 0.2s ease-out",
         "marquee-left": "marquee-left 30s linear infinite",
         "marquee-right": "marquee-right 30s linear infinite",
-        "marquee-left-slow": "marquee-left 45s linear infinite",
+        "marquee-left-slow": "marquee-left 60s linear infinite",
         "float": "float 6s ease-in-out infinite",
         "float-delayed": "float-delayed 8s ease-in-out infinite",
         "pulse-glow": "pulse-glow 3s ease-in-out infinite",

@@ -1,6 +1,7 @@
 import { motion, useScroll } from "framer-motion";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, useCallback } from "react";
 import { ArrowRight, ArrowLeft, ChevronLeft, ChevronRight, Expand, ExternalLink } from "lucide-react";
+import AutoScroll from "embla-carousel-auto-scroll";
 import {
   FadeIn,
   SplitTextReveal,
@@ -209,44 +210,117 @@ function CapabilitiesSection() {
   );
 }
 
+const BRAND_LOGOS = [
+  { src: "/logos/ARPUDHAM Logo.jpg", name: "Arpudham" },
+  { src: "/logos/Athulya.jpg", name: "Athulya" },
+  { src: "/logos/Bloom Logo Open file-01.jpg", name: "Bloom" },
+  { src: "/logos/Breeze logo final-01.jpg", name: "Breeze" },
+  { src: "/logos/Gagan logo-01.jpg", name: "Gagan" },
+  { src: "/logos/Jewel logo-01.jpg", name: "Jewel" },
+  { src: "/logos/Radha.jpg", name: "Radha" },
+  { src: "/logos/S logo Final_v1.jpg (1).jpeg", name: "S Logo" },
+  { src: "/logos/Silversky logo.jpg", name: "Silversky" },
+];
+
+function BrandIdentitySection() {
+  return (
+    <section className="py-16 sm:py-24 lg:py-32 bg-[#0A0C14]" data-testid="section-brand-identity">
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 mb-16 lg:mb-24">
+          <div className="lg:col-span-2">
+            <FadeIn>
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-[1px] bg-primary" />
+                <GlitchText
+                  text="Brand Identity"
+                  className="text-primary text-sm font-mono font-bold uppercase tracking-[0.3em]"
+                />
+              </div>
+            </FadeIn>
+          </div>
+          <div className="lg:col-span-6">
+            <SplitTextReveal
+              text="Logos crafted from brand essence."
+              className="font-heading text-3xl md:text-4xl lg:text-5xl font-extrabold text-white leading-[1.1] tracking-[-0.02em]"
+            />
+          </div>
+          <div className="lg:col-span-4 flex lg:items-end lg:justify-end">
+            <FadeIn delay={0.3}>
+              <p className="text-white/50 text-sm leading-relaxed max-w-xs">
+                Every logo we design is rooted in the brand's core themes, audience
+                and market positioning — not just aesthetics.
+              </p>
+            </FadeIn>
+          </div>
+        </div>
+
+        {/* Row 1: 5 logos */}
+        <div className="grid grid-cols-3 sm:grid-cols-5 gap-3 sm:gap-4">
+          {BRAND_LOGOS.slice(0, 5).map((logo, i) => (
+            <FadeIn key={logo.name} delay={i * 0.06}>
+              <motion.div
+                className="group relative bg-white rounded-xl border border-white/10 overflow-hidden h-[120px] sm:h-[140px] flex items-center justify-center p-4 sm:p-6"
+                whileHover={{ y: -3, borderColor: "hsl(0 78% 48% / 0.3)" }}
+                transition={{ duration: 0.3 }}
+              >
+                <img src={logo.src} alt={`${logo.name} brand logo`} className="max-w-full max-h-full object-contain" loading="lazy" />
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent px-3 py-2 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                  <span className="text-white text-[10px] font-mono font-bold uppercase tracking-[0.15em]">{logo.name}</span>
+                </div>
+              </motion.div>
+            </FadeIn>
+          ))}
+        </div>
+        {/* Row 2: 4 logos centered */}
+        <div className="grid grid-cols-3 sm:grid-cols-4 gap-3 sm:gap-4 mt-3 sm:mt-4 max-w-[80%] mx-auto">
+          {BRAND_LOGOS.slice(5, 9).map((logo, i) => (
+            <FadeIn key={logo.name} delay={(i + 5) * 0.06}>
+              <motion.div
+                className="group relative bg-white rounded-xl border border-white/10 overflow-hidden h-[120px] sm:h-[140px] flex items-center justify-center p-4 sm:p-6"
+                whileHover={{ y: -3, borderColor: "hsl(0 78% 48% / 0.3)" }}
+                transition={{ duration: 0.3 }}
+              >
+                <img src={logo.src} alt={`${logo.name} brand logo`} className="max-w-full max-h-full object-contain" loading="lazy" />
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent px-3 py-2 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                  <span className="text-white text-[10px] font-mono font-bold uppercase tracking-[0.15em]">{logo.name}</span>
+                </div>
+              </motion.div>
+            </FadeIn>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function CampaignAssetShowcaseSection() {
   const [viewerIndex, setViewerIndex] = useState<number | null>(null);
   const [carouselApi, setCarouselApi] = useState<CarouselApi>();
-  const [canScrollPrev, setCanScrollPrev] = useState(false);
-  const [canScrollNext, setCanScrollNext] = useState(false);
+  const autoScrollPluginRef = useRef(
+    AutoScroll({ speed: 1.2, stopOnInteraction: false, stopOnMouseEnter: true })
+  );
   const activeAsset = viewerIndex !== null ? MEDIA_ASSET_SHOWCASE[viewerIndex] : null;
 
-  useEffect(() => {
-    if (!carouselApi) return;
-
-    const onSelect = () => {
-      setCanScrollPrev(carouselApi.canScrollPrev());
-      setCanScrollNext(carouselApi.canScrollNext());
-    };
-
-    onSelect();
-    carouselApi.on("select", onSelect);
-    carouselApi.on("reInit", onSelect);
-
-    return () => {
-      carouselApi.off("select", onSelect);
-      carouselApi.off("reInit", onSelect);
-    };
-  }, [carouselApi]);
-
-  const showPrev = () => {
+  const showPrev = useCallback(() => {
     setViewerIndex((prev) => {
       if (prev === null) return null;
       return prev === 0 ? MEDIA_ASSET_SHOWCASE.length - 1 : prev - 1;
     });
-  };
+  }, []);
 
-  const showNext = () => {
+  const showNext = useCallback(() => {
     setViewerIndex((prev) => {
       if (prev === null) return null;
       return prev === MEDIA_ASSET_SHOWCASE.length - 1 ? 0 : prev + 1;
     });
-  };
+  }, []);
+
+  // Resume auto-scroll after manual button interaction
+  const handleManualScroll = useCallback((direction: "prev" | "next") => {
+    if (direction === "prev") carouselApi?.scrollPrev();
+    else carouselApi?.scrollNext();
+    setTimeout(() => autoScrollPluginRef.current.play(), 500);
+  }, [carouselApi]);
 
   return (
     <section className="py-12 sm:py-16 bg-[#FAFAFA]" data-testid="section-campaign-asset-showcase">
@@ -261,7 +335,12 @@ function CampaignAssetShowcaseSection() {
 
       <div className="relative left-1/2 right-1/2 -mx-[50vw] w-screen mt-5">
         <div className="relative px-6 lg:px-12">
-          <Carousel opts={{ align: "start" }} setApi={setCarouselApi} className="w-full">
+          <Carousel
+            opts={{ align: "start", loop: true }}
+            plugins={[autoScrollPluginRef.current]}
+            setApi={setCarouselApi}
+            className="w-full"
+          >
             <CarouselContent className="pb-2">
               {MEDIA_ASSET_SHOWCASE.map((asset, i) => (
                 <CarouselItem
@@ -330,19 +409,17 @@ function CampaignAssetShowcaseSection() {
           </Carousel>
           <button
             type="button"
-            onClick={() => carouselApi?.scrollPrev()}
-            disabled={!canScrollPrev}
+            onClick={() => handleManualScroll("prev")}
             aria-label="Previous campaign asset"
-            className="absolute left-5 lg:left-12 top-[42%] -translate-y-1/2 z-10 h-9 w-9 rounded-full border border-border/60 bg-white text-foreground flex items-center justify-center hover:bg-white/95 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+            className="absolute left-5 lg:left-12 top-[42%] -translate-y-1/2 z-10 h-9 w-9 rounded-full border border-border/60 bg-white text-foreground flex items-center justify-center hover:bg-white/95 transition-colors"
           >
             <ArrowLeft className="h-4 w-4" />
           </button>
           <button
             type="button"
-            onClick={() => carouselApi?.scrollNext()}
-            disabled={!canScrollNext}
+            onClick={() => handleManualScroll("next")}
             aria-label="Next campaign asset"
-            className="absolute right-5 lg:right-12 top-[42%] -translate-y-1/2 z-10 h-9 w-9 rounded-full border border-border/60 bg-white text-foreground flex items-center justify-center hover:bg-white/95 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+            className="absolute right-5 lg:right-12 top-[42%] -translate-y-1/2 z-10 h-9 w-9 rounded-full border border-border/60 bg-white text-foreground flex items-center justify-center hover:bg-white/95 transition-colors"
           >
             <ArrowRight className="h-4 w-4" />
           </button>
@@ -464,6 +541,7 @@ export default function Creative() {
     <main>
       <CreativeHero />
       <CapabilitiesSection />
+      <BrandIdentitySection />
       <CampaignAssetShowcaseSection />
       <MassVisibilitySection />
     </main>

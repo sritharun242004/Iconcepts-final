@@ -201,7 +201,6 @@ function BusShelterSection() {
 
 const MALL_IMAGES = [
   "/Gemini Generated Image.png",
-  "/Gemini Generated Image (1).png",
 ];
 
 function MallCarousel() {
