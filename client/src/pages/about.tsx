@@ -371,11 +371,6 @@ function AwardsSection() {
                 creative excellence across every medium we operate in.
               </p>
             </FadeIn>
-            <FadeIn delay={0.7}>
-              <p className="mt-6 text-muted-foreground text-base leading-[1.8]">
-                Received the 2025 Gold Award from the Public Relations Society of India under the Best Corporate Brochure category.
-              </p>
-            </FadeIn>
             <FadeIn delay={0.9}>
               <div className="mt-8 flex items-center gap-3">
                 <div className="w-8 h-[1px] bg-primary" />
