@@ -177,7 +177,7 @@ const TEAM_MEMBERS = [
   {
     name: "Geetha Prakash",
     designation: "Finance Head",
-    about: "Geetha Prakash is a Postgraduate with a Law degree. She has extensive experience in Retail, Management, Administration, and Accounts and has been leading I Concepts since its inception. She oversees administration and accounts operations for the company. Thanks to her meticulous accounts and cash management practices, I Concepts has maintained a strong financial position with zero borrowings and a healthy surplus cash flow.",
+    about: "Geetha Prakash is a Postgraduate with a Law Degree. She has extensive experience in Retail, Management, Administration, and Accounts and has been leading I Concepts since its inception. She oversees administration and accounts operations for the company. Thanks to her meticulous accounts and cash management practices, I Concepts has maintained a strong financial position with zero borrowings and a healthy surplus cash flow.",
     isFounder: false,
     initials: "GP",
     image: "/team/geetha.png",
