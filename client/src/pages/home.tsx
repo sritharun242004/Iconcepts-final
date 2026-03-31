@@ -781,8 +781,8 @@ function ContactSection() {
                   </div>
                   <div>
                     <p className="text-xs font-mono font-bold uppercase tracking-[0.2em] text-muted-foreground mb-2">Email</p>
-                    <a href="mailto:info@iconcepts.in" className="text-primary text-sm hover:underline">
-                      info@iconcepts.in
+                    <a href="mailto:connect@iconcepts.in" className="text-primary text-sm hover:underline">
+                      connect@iconcepts.in
                     </a>
                   </div>
                 </div>

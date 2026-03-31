@@ -87,8 +87,8 @@ export function Footer() {
                 <h4 className="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-4 font-bold font-mono">Reach Us</h4>
                 <div className="space-y-2 text-xs text-white/60">
                   <p>Chennai, Tamil Nadu</p>
-                  <a href="mailto:info@iconcepts.in" className="block hover:text-white transition-colors" data-testid="link-footer-email">
-                    info@iconcepts.in
+                  <a href="mailto:connect@iconcepts.in" className="block hover:text-white transition-colors" data-testid="link-footer-email">
+                    connect@iconcepts.in
                   </a>
                 </div>
               </FadeIn>
