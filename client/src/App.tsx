@@ -92,7 +92,9 @@ function App() {
         <MouseFollower />
         <Navbar />
         <ScrollToTop />
-        <Router />
+        <div style={{ minHeight: "100vh" }}>
+          <Router />
+        </div>
         <Footer />
         <Toaster />
       </TooltipProvider>
