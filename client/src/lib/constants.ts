@@ -78,7 +78,7 @@ export const CLIENT_PARTNER_SEGMENTS: { title: string; logos: string[] }[] = [
       "/logos/partners/Web-logo-07.png",
       "/logos/partners/casagrand.png",
       "sm:/logos/partners/G square.png",
-      "text:Propfair",
+      "sm:/propfair-logo.png",
       "/logos/partners/Web-logo-11.png",
       "/logos/partners/Web-logo-17.png",
       "/logos/partners/Web-logo-16.png",
@@ -93,7 +93,6 @@ export const CLIENT_PARTNER_SEGMENTS: { title: string; logos: string[] }[] = [
       "sm:/logos/Jewel%20logo-01.jpg",
       "sm:/logos/Radha.jpg",
       "sm:/logos/S%20logo%20Final_v1.jpg%20(1).jpeg",
-      "sm:/logos/Silversky%20logo.jpg",
     ],
   },
   {

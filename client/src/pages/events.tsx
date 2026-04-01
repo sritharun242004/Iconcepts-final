@@ -42,11 +42,6 @@ function EventsHero() {
       className="relative min-h-screen bg-[#F8F8F8] overflow-hidden flex items-center"
       data-testid="section-events-hero"
     >
-      {/* Subtle grid texture */}
-      <div className="absolute inset-0 pointer-events-none" style={{
-        backgroundImage: "linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px)",
-        backgroundSize: "80px 80px"
-      }} />
       <div className="absolute top-[11%] right-[3%] z-[2] scale-[0.6] md:scale-[0.73] lg:scale-100 origin-top-right">
         <SignatureOrbit
           text={SIGNATURE_ORBIT_TEXT}
@@ -55,13 +50,6 @@ function EventsHero() {
           minOpacity={0.06}
           maxOpacity={0.18}
         />
-      </div>
-
-      {/* Grid lines */}
-      <div className="absolute inset-0 pointer-events-none hidden lg:block">
-        <div className="absolute top-[20%] left-0 w-full h-[1px] bg-foreground/[0.04]" />
-        <div className="absolute top-0 left-[15%] w-[1px] h-full bg-foreground/[0.04]" />
-        <div className="absolute top-0 right-[15%] w-[1px] h-full bg-foreground/[0.04]" />
       </div>
 
       <div className="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-12 w-full flex flex-col items-center justify-center pb-20">
