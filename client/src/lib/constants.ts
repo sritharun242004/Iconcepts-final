@@ -90,6 +90,7 @@ export const CLIENT_PARTNER_SEGMENTS: { title: string; logos: string[] }[] = [
       "sm:/logos/Jewel%20logo-01.jpg",
       "sm:/logos/Radha.jpg",
       "sm:/logos/S%20logo%20Final_v1.jpg%20(1).jpeg",
+      "sm:/logos/Silversky%20logo.jpg",
     ],
   },
   {
