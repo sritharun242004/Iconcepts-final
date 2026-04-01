@@ -40,26 +40,6 @@ function BTLHero() {
         />
       </div>
 
-      {/* Mosaic of service words as background texture — hidden on small screens */}
-      <div className="absolute inset-0 pointer-events-none select-none overflow-hidden hidden sm:block">
-        {scatteredWords.map((word, i) => (
-          <motion.span
-            key={word}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3 + i * 0.06, duration: 0.8 }}
-            className="absolute font-heading font-extrabold text-foreground/[0.04] whitespace-nowrap"
-            style={{
-              top: `${8 + (i * 37) % 85}%`,
-              left: `${5 + (i * 53) % 90}%`,
-              fontSize: `${1 + (i % 3) * 0.8}rem`,
-              transform: `rotate(${-5 + (i % 7) * 2}deg)`,
-            }}
-          >
-            {word}
-          </motion.span>
-        ))}
-      </div>
 
       {/* Grid lines */}
       <div className="absolute inset-0 pointer-events-none hidden lg:block">
