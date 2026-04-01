@@ -55,7 +55,7 @@ function MediaHero() {
         <span className="font-mono text-[clamp(8rem,20vw,18rem)] font-bold text-foreground/[0.03] leading-none">02</span>
       </motion.div>
 
-      <div className="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-12 pt-28 sm:pt-32 lg:pt-40 pb-12 sm:pb-16 lg:pb-24">
+      <div className="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-12 pt-20 sm:pt-24 lg:pt-28 pb-12 sm:pb-16 lg:pb-24">
         {/* Top bar — newspaper masthead style */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}

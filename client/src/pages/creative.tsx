@@ -69,7 +69,7 @@ function CreativeHero() {
         />
       </div>
 
-      <div className="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-12 pt-28 sm:pt-32 lg:pt-40 pb-12 sm:pb-16 lg:pb-24">
+      <div className="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-12 pt-20 sm:pt-24 lg:pt-28 pb-12 sm:pb-16 lg:pb-24">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:min-h-[75vh] items-end">
           {/* Left — main headline */}
           <div className="lg:col-span-7">

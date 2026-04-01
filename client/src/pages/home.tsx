@@ -47,7 +47,7 @@ function HeroSection() {
   return (
     <section
       ref={containerRef}
-      className="relative lg:h-screen flex flex-col justify-end overflow-hidden bg-[#F8F8F8]"
+      className="relative lg:h-screen flex flex-col justify-center overflow-hidden bg-[#F8F8F8]"
       data-testid="section-hero"
     >
 
@@ -64,7 +64,7 @@ function HeroSection() {
 
       <motion.div
         style={{ y: heroY, opacity: heroOpacity }}
-        className="relative z-10 px-6 lg:px-12 pb-16 sm:pb-20 lg:pb-24 pt-44 sm:pt-52 lg:pt-32"
+        className="relative z-10 px-6 lg:px-12 pb-8 sm:pb-10 lg:pb-12 pt-20 sm:pt-24 lg:pt-20"
       >
         <div className="flex items-end justify-between gap-8 max-w-[1400px] mx-auto">
           <div className="flex-1">

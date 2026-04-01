@@ -69,7 +69,7 @@ function BTLHero() {
         <div className="absolute top-0 right-[15%] w-[1px] h-full bg-foreground/[0.04]" />
       </div>
 
-      <div className="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-12 w-full pt-32 sm:pt-36 lg:pt-28">
+      <div className="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-12 w-full pt-20 sm:pt-24 lg:pt-16">
         {/* BTL label — left aligned */}
         <motion.div
           initial={{ opacity: 0, x: -30 }}

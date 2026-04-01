@@ -27,7 +27,7 @@ function AboutHero() {
   return (
     <section
       ref={containerRef}
-      className="relative min-h-[85vh] lg:h-screen flex flex-col justify-end bg-[#F8F8F8] overflow-hidden"
+      className="relative min-h-[85vh] lg:h-screen flex flex-col justify-center bg-[#F8F8F8] overflow-hidden"
       data-testid="section-about-hero"
     >
       <div className="absolute top-[12%] right-[3%] z-[2] scale-[0.6] md:scale-[0.73] lg:scale-100 origin-top-right">
@@ -49,7 +49,7 @@ function AboutHero() {
         />
       </div>
 
-      <div className="relative z-10 px-6 lg:px-12 pb-12 sm:pb-16 lg:pb-24 pt-32 sm:pt-36 lg:pt-0">
+      <div className="relative z-10 px-6 lg:px-12 pb-8 sm:pb-10 lg:pb-12 pt-20 sm:pt-24 lg:pt-20">
         <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
           {/* Left: Headline + para */}
           <div className="lg:col-span-7">
