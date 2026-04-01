@@ -87,7 +87,6 @@ export const CLIENT_PARTNER_SEGMENTS: { title: string; logos: string[] }[] = [
       "/logos/partners/Web-logo-10.png",
       "sm:/logos/ARPUDHAM%20Logo.jpg",
       "md:/logos/Athulya.jpg",
-      "sm:/logos/Bloom%20Logo%20Open%20file-01.jpg",
       "xs:/logos/Breeze%20logo%20final-01.jpg",
       "sm:/logos/Gagan%20logo-01.jpg",
       "sm:/logos/Jewel%20logo-01.jpg",
