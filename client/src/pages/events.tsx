@@ -75,14 +75,6 @@ function EventsHero() {
             From product launches to large-scale public engagements — we conceptualise
             and execute events that build lasting brand presence with full accountability.
           </motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.1 }}
-            className="mt-8 flex justify-center"
-          >
-            <img src="/propfair-logo.png" alt="Propfair" className="h-20 object-contain" />
-          </motion.div>
         </div>
       </div>
 
