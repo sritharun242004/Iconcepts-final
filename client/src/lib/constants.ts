@@ -79,8 +79,6 @@ export const CLIENT_PARTNER_SEGMENTS: { title: string; logos: string[] }[] = [
       "sm:/logos/partners/G square.png",
       "sm:/propfair-logo.png",
       "/logos/partners/Web-logo-11.png",
-      "/logos/partners/Web-logo-17.png",
-      "/logos/partners/Web-logo-16.png",
       "/logos/partners/Web-logo-09.png",
       "/logos/partners/Web-logo-12.png",
       "/logos/partners/Web-logo-10.png",
