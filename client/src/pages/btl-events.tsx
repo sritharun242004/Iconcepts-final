@@ -41,13 +41,6 @@ function BTLHero() {
       </div>
 
 
-      {/* Grid lines */}
-      <div className="absolute inset-0 pointer-events-none hidden lg:block">
-        <div className="absolute top-[20%] left-0 w-full h-[1px] bg-foreground/[0.04]" />
-        <div className="absolute top-[80%] left-0 w-full h-[1px] bg-foreground/[0.04]" />
-        <div className="absolute top-0 left-[15%] w-[1px] h-full bg-foreground/[0.04]" />
-        <div className="absolute top-0 right-[15%] w-[1px] h-full bg-foreground/[0.04]" />
-      </div>
 
       <div className="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-12 w-full pt-20 sm:pt-24 lg:pt-16">
         {/* BTL label — left aligned */}
