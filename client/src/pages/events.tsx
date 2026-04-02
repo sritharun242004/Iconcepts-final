@@ -13,6 +13,7 @@ import {
 } from "@/components/animations";
 import { SIGNATURE_ORBIT_TEXT } from "@/lib/constants";
 import { scrollToContact } from "@/lib/utils";
+import { HeroGridLines } from "@/components/decorative-shapes";
 
 const PROPFAIR_CITIES = [
   { city: "Chennai", editions: "7 Editions", color: "bg-primary" },
@@ -42,6 +43,7 @@ function EventsHero() {
       className="relative min-h-screen bg-[#F8F8F8] overflow-hidden flex items-center"
       data-testid="section-events-hero"
     >
+      <HeroGridLines />
       <div className="absolute top-[11%] right-[3%] z-[2] scale-[0.6] md:scale-[0.73] lg:scale-100 origin-top-right">
         <SignatureOrbit
           text={SIGNATURE_ORBIT_TEXT}

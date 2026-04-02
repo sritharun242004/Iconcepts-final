@@ -473,16 +473,22 @@ export function Marquee({
 }: {
   children: ReactNode;
   direction?: "left" | "right";
-  speed?: "slow" | "normal" | "fast";
+  speed?: "very-slow" | "slow" | "normal" | "fast";
   className?: string;
 }) {
   const reduced = usePrefersReducedMotion();
   const animClass = reduced
     ? ""
     : direction === "left"
-      ? speed === "slow"
+      ? speed === "very-slow"
+        ? "animate-marquee-left-very-slow"
+        : speed === "slow"
         ? "animate-marquee-left-slow"
         : "animate-marquee-left"
+      : speed === "very-slow"
+      ? "animate-marquee-right-very-slow"
+      : speed === "slow"
+      ? "animate-marquee-right-slow"
       : "animate-marquee-right";
 
   return (

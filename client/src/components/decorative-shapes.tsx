@@ -344,3 +344,23 @@ export function AccreditationBackgroundShapes() {
     </div>
   );
 }
+
+// Background grid pattern and lines for Hero sections
+export function HeroGridLines() {
+  return (
+    <>
+      {/* Subtle grid texture */}
+      <div className="absolute inset-0 pointer-events-none" style={{
+        backgroundImage: "linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px)",
+        backgroundSize: "80px 80px"
+      }} />
+      
+      {/* Newspaper-style column rules */}
+      <div className="absolute inset-0 hidden lg:block pointer-events-none">
+        <div className="absolute top-0 left-[25%] w-[1px] h-full bg-foreground/[0.04]" />
+        <div className="absolute top-0 left-[50%] w-[1px] h-full bg-foreground/[0.04]" />
+        <div className="absolute top-0 left-[75%] w-[1px] h-full bg-foreground/[0.04]" />
+      </div>
+    </>
+  );
+}

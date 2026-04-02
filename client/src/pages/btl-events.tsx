@@ -9,6 +9,7 @@ import {
 } from "@/components/animations";
 import { BTL_SERVICES, SIGNATURE_ORBIT_TEXT } from "@/lib/constants";
 import { scrollToContact } from "@/lib/utils";
+import { HeroGridLines } from "@/components/decorative-shapes";
 
 function BTLHero() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -30,6 +31,7 @@ function BTLHero() {
       className="relative min-h-[50vh] lg:min-h-[65vh] bg-[#F8F8F8] overflow-hidden flex items-center"
       data-testid="section-btl-hero"
     >
+      <HeroGridLines />
       <div className="absolute top-[11%] right-[3%] z-[2] scale-[0.6] md:scale-[0.73] lg:scale-100 origin-top-right">
         <SignatureOrbit
           text={SIGNATURE_ORBIT_TEXT}

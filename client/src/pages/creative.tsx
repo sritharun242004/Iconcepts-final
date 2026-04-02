@@ -14,6 +14,7 @@ import {
 } from "@/components/animations";
 import { SIGNATURE_ORBIT_TEXT, MEDIA_ASSET_SHOWCASE } from "@/lib/constants";
 import { scrollToContact } from "@/lib/utils";
+import { HeroGridLines } from "@/components/decorative-shapes";
 import {
   type CarouselApi,
   Carousel,
@@ -36,6 +37,7 @@ function CreativeHero() {
       className="relative min-h-[85vh] lg:min-h-screen bg-[#F8F8F8] overflow-hidden"
       data-testid="section-creative-hero"
     >
+      <HeroGridLines />
 
       {/* Giant background word */}
       <div className="absolute top-[10%] -right-[5%] pointer-events-none select-none">

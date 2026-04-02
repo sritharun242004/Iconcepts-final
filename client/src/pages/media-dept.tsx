@@ -14,6 +14,7 @@ import {
 } from "@/components/animations";
 import { NEWSPAPER_PARTNERS, SIGNATURE_ORBIT_TEXT } from "@/lib/constants";
 import { scrollToContact } from "@/lib/utils";
+import { HeroGridLines } from "@/components/decorative-shapes";
 
 function MediaHero() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -28,6 +29,7 @@ function MediaHero() {
       className="relative min-h-[85vh] lg:min-h-screen bg-[#F8F8F8] overflow-hidden"
       data-testid="section-media-hero"
     >
+      <HeroGridLines />
       <div className="absolute top-[11%] right-[3%] z-[2] scale-[0.6] md:scale-[0.73] lg:scale-100 origin-top-right">
         <SignatureOrbit
           text={SIGNATURE_ORBIT_TEXT}
@@ -38,12 +40,7 @@ function MediaHero() {
         />
       </div>
 
-      {/* Newspaper-style column rules */}
-      <div className="absolute inset-0 hidden lg:block pointer-events-none">
-        <div className="absolute top-0 left-[25%] w-[1px] h-full bg-foreground/[0.04]" />
-        <div className="absolute top-0 left-[50%] w-[1px] h-full bg-foreground/[0.04]" />
-        <div className="absolute top-0 left-[75%] w-[1px] h-full bg-foreground/[0.04]" />
-      </div>
+
 
       {/* Large background "02" */}
       <motion.div

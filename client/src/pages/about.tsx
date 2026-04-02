@@ -16,6 +16,7 @@ import {
 } from "@/components/animations";
 import { SIGNATURE_ORBIT_TEXT } from "@/lib/constants";
 import { scrollToContact } from "@/lib/utils";
+import { HeroGridLines } from "@/components/decorative-shapes";
 
 function AboutHero() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -28,8 +29,8 @@ function AboutHero() {
     <section
       ref={containerRef}
       className="relative min-h-[85vh] lg:h-screen flex flex-col justify-center bg-[#F8F8F8] overflow-hidden"
-      data-testid="section-about-hero"
     >
+      <HeroGridLines />
       <div className="absolute top-[12%] right-[3%] z-[2] scale-[0.6] md:scale-[0.73] lg:scale-100 origin-top-right">
         <SignatureOrbit
           text={SIGNATURE_ORBIT_TEXT}

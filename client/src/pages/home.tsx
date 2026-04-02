@@ -32,6 +32,7 @@ import {
   ServicesBackgroundShapes,
   TestimonialsBackgroundShapes,
   AccreditationBackgroundShapes,
+  HeroGridLines,
 } from "@/components/decorative-shapes";
 import logoPath from "@assets/logo.jpg";
 
@@ -50,6 +51,7 @@ function HeroSection() {
       className="relative lg:h-screen flex flex-col justify-center overflow-hidden bg-[#F8F8F8]"
       data-testid="section-hero"
     >
+      <HeroGridLines />
 
       {/* Signature accreditation orbit */}
       <div className="absolute top-[12%] right-[3%] z-[2] scale-[0.6] md:scale-[0.73] lg:scale-100 origin-top-right">
@@ -581,13 +583,14 @@ function ClientsSection() {
               : isMedLogo
               ? "max-h-20 sm:max-h-24"
               : isRealEstate
-              ? "max-h-28 sm:max-h-32"
+              ? "max-h-36 sm:max-h-44"
               : "max-h-20 sm:max-h-24";
-            const cardHeight = isRealEstate ? "h-[140px]" : "h-[110px]";
+            const cardHeight = isRealEstate ? "h-[180px]" : "h-[110px]";
+            const cardWidth = isRealEstate ? "w-[280px] sm:w-[320px]" : "w-[220px] sm:w-[250px]";
             return (
               <div
                 key={`${segment.title}-${logoIndex}`}
-                className={`mx-2 w-[220px] sm:w-[250px] ${cardHeight} rounded-xl bg-white border border-border/50 flex items-center justify-center px-5 flex-shrink-0`}
+                className={`mx-2 ${cardWidth} ${cardHeight} rounded-xl bg-white border border-border/50 flex items-center justify-center px-5 flex-shrink-0`}
                 data-testid={`client-logo-${rowIndex}-${logoIndex}`}
               >
                 {isTextEntry ? (
@@ -616,7 +619,7 @@ function ClientsSection() {
                   ) : (
                     <Marquee
                       direction={rowIndex % 2 === 0 ? "left" : "right"}
-                      speed="slow"
+                      speed={segment.title === "Real Estate" ? "very-slow" : "slow"}
                       className="w-full"
                     >
                       {logoCards}
