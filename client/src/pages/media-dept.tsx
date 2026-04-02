@@ -26,7 +26,7 @@ function MediaHero() {
   return (
     <section
       ref={containerRef}
-      className="relative min-h-[85vh] lg:min-h-screen bg-[#F8F8F8] overflow-hidden"
+      className="relative min-h-[85vh] lg:min-h-screen bg-[#F8F8F8] overflow-hidden flex flex-col justify-center"
       data-testid="section-media-hero"
     >
       <HeroGridLines />
@@ -42,17 +42,9 @@ function MediaHero() {
 
 
 
-      {/* Large background "02" */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.3, duration: 1 }}
-        className="absolute bottom-[5%] right-[5%] pointer-events-none select-none"
-      >
-        <span className="font-mono text-[clamp(8rem,20vw,18rem)] font-bold text-foreground/[0.03] leading-none">02</span>
-      </motion.div>
 
-      <div className="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-12 pt-20 sm:pt-24 lg:pt-28 pb-12 sm:pb-16 lg:pb-24">
+
+      <div className="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-12 w-full pt-16 lg:pt-0">
         {/* Top bar — newspaper masthead style */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
