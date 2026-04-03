@@ -383,7 +383,7 @@ function RotaryEventSection() {
                   preload="metadata"
                   poster="/rotary%20event/6T8A1167.JPG"
                 >
-                  <source src="/rotary%20event/WhatsApp%20Video%202026-03-27%20at%2010.20.45_trimmed.mp4" type="video/mp4" />
+                  <source src="/WhatsApp%20Video%202026-04-03%20at%2009.45.21.mp4" type="video/mp4" />
                 </video>
               </div>
               <p className="mt-3 text-white/20 text-xs font-mono uppercase tracking-[0.2em]">
