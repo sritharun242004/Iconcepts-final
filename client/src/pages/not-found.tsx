@@ -1,10 +1,12 @@
 import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { SEO } from "@/components/seo";
 
 export default function NotFound() {
   return (
     <main className="min-h-screen flex items-center justify-center bg-[#0A0C14]">
+      <SEO title="Page Not Found" noIndex={true} />
       <div className="text-center px-6">
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}

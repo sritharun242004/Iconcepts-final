@@ -28,6 +28,7 @@ import {
   SIGNATURE_ORBIT_TEXT,
 } from "@/lib/constants";
 import { scrollToContact } from "@/lib/utils";
+import { SEO } from "@/components/seo";
 import {
   ServicesBackgroundShapes,
   TestimonialsBackgroundShapes,
@@ -800,6 +801,10 @@ function ContactSection() {
 export default function Home() {
   return (
     <main>
+      <SEO
+        path="/"
+        description="iConcepts is an INS Accredited & DIPR Empanelled 360° advertising agency in Chennai offering creative services, media planning, BTL execution, and event management for India's leading brands."
+      />
       <HeroSection />
       <MarqueeBand />
       <ServicesCluster />

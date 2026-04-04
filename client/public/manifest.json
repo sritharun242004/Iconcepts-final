@@ -1,0 +1,34 @@
+{
+  "name": "iConcepts - 360° Advertising & Brand Building Agency",
+  "short_name": "iConcepts",
+  "description": "INS Accredited & DIPR Empanelled full-service advertising agency in Chennai. Creative, media planning, BTL execution, and event management.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0A0C14",
+  "theme_color": "#C21818",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ],
+  "categories": ["business", "advertising"],
+  "lang": "en-IN"
+}

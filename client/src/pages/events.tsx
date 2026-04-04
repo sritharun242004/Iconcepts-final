@@ -13,6 +13,7 @@ import {
 } from "@/components/animations";
 import { SIGNATURE_ORBIT_TEXT } from "@/lib/constants";
 import { scrollToContact } from "@/lib/utils";
+import { SEO } from "@/components/seo";
 import { HeroGridLines } from "@/components/decorative-shapes";
 
 const PROPFAIR_CITIES = [
@@ -475,6 +476,11 @@ function RotaryEventSection() {
 export default function Events() {
   return (
     <main>
+      <SEO
+        title="Events & Experiences"
+        path="/events"
+        description="Product launches, corporate events, brand activations, and Propfair property expos across Chennai, Pune, Mumbai, Bangalore, and Hyderabad. 14+ editions and 1000+ leads generated."
+      />
       <EventsHero />
       <PropfairSection />
       <EventsExperiencesSection />

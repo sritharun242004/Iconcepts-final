@@ -14,6 +14,7 @@ import {
 } from "@/components/animations";
 import { SIGNATURE_ORBIT_TEXT, MEDIA_ASSET_SHOWCASE } from "@/lib/constants";
 import { scrollToContact } from "@/lib/utils";
+import { SEO } from "@/components/seo";
 import { HeroGridLines } from "@/components/decorative-shapes";
 import {
   type CarouselApi,
@@ -536,6 +537,11 @@ function MassVisibilitySection() {
 export default function Creative() {
   return (
     <main>
+      <SEO
+        title="Creative Department"
+        path="/creative"
+        description="Brand strategy, campaign ideation, print design, visual identity, and packaging design. iConcepts creative team delivers impactful communication for India's top brands."
+      />
       <CreativeHero />
       <CapabilitiesSection />
       <BrandIdentitySection />

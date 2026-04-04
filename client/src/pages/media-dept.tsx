@@ -14,6 +14,7 @@ import {
 } from "@/components/animations";
 import { NEWSPAPER_PARTNERS, SIGNATURE_ORBIT_TEXT } from "@/lib/constants";
 import { scrollToContact } from "@/lib/utils";
+import { SEO } from "@/components/seo";
 import { HeroGridLines } from "@/components/decorative-shapes";
 
 function MediaHero() {
@@ -308,6 +309,11 @@ function MediaApproachSection() {
 export default function MediaDept() {
   return (
     <main>
+      <SEO
+        title="Media Department"
+        path="/media"
+        description="INS Accredited national-level media planning and buying. Newspaper, magazine, TV, radio, and outdoor advertising with full compliance and transparent billing."
+      />
       <MediaHero />
       <NewspaperPartnersSection />
       <MediaServicesSection />

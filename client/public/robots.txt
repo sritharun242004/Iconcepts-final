@@ -1,0 +1,19 @@
+# robots.txt for iConcepts - https://iconcepts.in
+
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /_vercel/
+
+# Sitemap location
+Sitemap: https://iconcepts.in/sitemap.xml
+
+# Crawl-delay for polite crawling
+User-agent: AdsBot-Google
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /

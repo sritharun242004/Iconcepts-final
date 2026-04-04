@@ -9,6 +9,7 @@ import {
 } from "@/components/animations";
 import { BTL_SERVICES, SIGNATURE_ORBIT_TEXT } from "@/lib/constants";
 import { scrollToContact } from "@/lib/utils";
+import { SEO } from "@/components/seo";
 import { HeroGridLines } from "@/components/decorative-shapes";
 
 function BTLHero() {
@@ -345,6 +346,11 @@ function TruckVideoSection() {
 export default function BTLEvents() {
   return (
     <main>
+      <SEO
+        title="BTL & Outdoor Advertising"
+        path="/btl-events"
+        description="Below-the-line advertising services — outdoor hoardings, bus branding, bus shelter ads, LED screening, digital truck advertising, and vehicle branding across India."
+      />
       <BTLHero />
       <BTLServicesSection />
       <TruckVideoSection />

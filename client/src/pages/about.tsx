@@ -16,6 +16,7 @@ import {
 } from "@/components/animations";
 import { SIGNATURE_ORBIT_TEXT } from "@/lib/constants";
 import { scrollToContact } from "@/lib/utils";
+import { SEO } from "@/components/seo";
 import { HeroGridLines } from "@/components/decorative-shapes";
 
 function AboutHero() {
@@ -533,6 +534,11 @@ function AboutCTA() {
 export default function About() {
   return (
     <main>
+      <SEO
+        title="About Us"
+        path="/about"
+        description="Learn about iConcepts — a 360° advertising agency in Chennai with 19+ years of experience. INS Accredited, DIPR Empanelled, and PRSI Gold Award winner serving 40+ clients across India."
+      />
       <AboutHero />
       <StorySection />
       <TeamSection />
