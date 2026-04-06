@@ -252,8 +252,8 @@ function BrandIdentitySection() {
           </div>
         </div>
 
-        {/* Logos: 2-col on mobile (last one centered), 5-col row + 4-col centered row on desktop */}
-        <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 sm:gap-4">
+        {/* Logos: 2-col on mobile (last centered), 3-col on desktop (3×3) */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
           {BRAND_LOGOS.map((logo, i) => {
             const isLast = i === BRAND_LOGOS.length - 1;
             const isOddTotal = BRAND_LOGOS.length % 2 !== 0;

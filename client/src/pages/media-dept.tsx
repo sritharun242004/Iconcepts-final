@@ -143,8 +143,12 @@ function NewspaperPartnersSection() {
           {NEWSPAPER_PARTNERS.map((partner, i) => {
             const isEconomicTimes = partner.name === "The Economic Times";
             return (
-              <FadeIn key={partner.name} delay={i * 0.05}>
-                <TiltCard tiltStrength={8} className="w-[240px] max-w-full">
+              <FadeIn
+                key={partner.name}
+                delay={i * 0.05}
+                className="w-[calc(50%-8px)] sm:w-[calc(33.333%-11px)]"
+              >
+                <TiltCard tiltStrength={8} className="w-full">
                   <motion.div
                     className="bg-white rounded-xl p-5 border border-border/40 flex flex-col items-center justify-center gap-3 group cursor-default shadow-sm hover:shadow-lg transition-all duration-300 min-h-[154px]"
                     whileHover={{ y: -4, borderColor: "hsl(0 78% 48% / 0.2)" }}
