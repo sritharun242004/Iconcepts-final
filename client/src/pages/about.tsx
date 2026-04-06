@@ -1,5 +1,5 @@
 import { motion, useScroll } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Trophy3D } from "@/components/trophy3d";
 import { ArrowRight } from "lucide-react";
 import {
@@ -238,12 +238,16 @@ function FounderBorder() {
 }
 
 function TeamCard({ member, index }: { member: typeof TEAM_MEMBERS[0]; index: number }) {
+  const [tapped, setTapped] = useState(false);
+
   return (
     <FadeIn delay={index * 0.08}>
       {/* Perspective wrapper */}
       <motion.div
         whileHover="hovered"
         initial="rest"
+        animate={tapped ? "hovered" : "rest"}
+        onTap={() => setTapped((prev) => !prev)}
         className="relative aspect-[3/4] max-h-[420px] cursor-default select-none"
         style={{ perspective: 1000 }}
       >

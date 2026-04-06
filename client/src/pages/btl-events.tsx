@@ -110,7 +110,7 @@ function BTLServicesSection() {
           {["Outdoor Hoardings", "Bus Branding", "Bus Shelters", "LED Screening", "Digital Truck", "Vehicle Branding"].map((service, i) => (
             <FadeIn key={service} delay={i * 0.05}>
               <motion.div
-                className="px-4 py-6 bg-white rounded-xl border border-border/40 shadow-sm hover:shadow-lg hover:border-primary/30 transition-all duration-300 cursor-default text-center"
+                className="px-4 py-6 bg-white rounded-xl border border-border/40 shadow-sm hover:shadow-lg hover:border-primary/30 transition-all duration-300 cursor-default text-center flex items-center justify-center aspect-square sm:aspect-[4/3] lg:aspect-square"
                 whileHover={{ y: -4, scale: 1.03 }}
                 transition={{ type: "spring", stiffness: 400, damping: 17 }}
               >

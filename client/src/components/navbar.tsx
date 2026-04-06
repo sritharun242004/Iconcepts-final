@@ -48,7 +48,7 @@ export function Navbar() {
         }`}
       >
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
-          <div className="flex items-center justify-between h-24">
+          <div className="flex items-center justify-between h-16 md:h-24">
             <Link href="/" data-testid="link-home">
               <motion.div
                 className="flex items-center gap-3 cursor-pointer"
@@ -60,7 +60,7 @@ export function Navbar() {
                 <img
                   src={logoPath}
                   alt="iConcepts"
-                  className="h-20 w-20 object-contain transition-all duration-500"
+                  className="h-10 w-10 md:h-20 md:w-20 object-contain transition-all duration-500"
                   data-testid="img-logo"
                 />
               </motion.div>

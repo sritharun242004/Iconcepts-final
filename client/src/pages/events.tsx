@@ -117,7 +117,7 @@ function PropfairSection() {
                     </div>
                     <p className="text-white/60 text-xs font-mono">14+ Events · 5 Cities · 1 Vision</p>
                   </div>
-                  <img src="/propfair-logo.png" alt="Propfair" className="h-[120px] object-contain" />
+                  <img src="/propfair-logo.png" alt="Propfair" className="h-[60px] sm:h-[80px] lg:h-[120px] object-contain max-w-[45%]" />
                 </div>
                 <div className="relative rounded-2xl overflow-hidden border border-white/[0.06]">
                   <img

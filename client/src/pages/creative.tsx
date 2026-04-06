@@ -252,39 +252,32 @@ function BrandIdentitySection() {
           </div>
         </div>
 
-        {/* Row 1: 5 logos */}
-        <div className="grid grid-cols-3 sm:grid-cols-5 gap-3 sm:gap-4">
-          {BRAND_LOGOS.slice(0, 5).map((logo, i) => (
-            <FadeIn key={logo.name} delay={i * 0.06}>
-              <motion.div
-                className="group relative bg-white rounded-xl border border-white/10 overflow-hidden h-[120px] sm:h-[140px] flex items-center justify-center p-4 sm:p-6"
-                whileHover={{ y: -3, borderColor: "hsl(0 78% 48% / 0.3)" }}
-                transition={{ duration: 0.3 }}
+        {/* Logos: 2-col on mobile (last one centered), 5-col row + 4-col centered row on desktop */}
+        <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 sm:gap-4">
+          {BRAND_LOGOS.map((logo, i) => {
+            const isLast = i === BRAND_LOGOS.length - 1;
+            const isOddTotal = BRAND_LOGOS.length % 2 !== 0;
+            return (
+              <FadeIn
+                key={logo.name}
+                delay={i * 0.06}
+                className={isLast && isOddTotal ? "col-span-2 sm:col-span-1 flex justify-center" : ""}
               >
-                <img src={logo.src} alt={`${logo.name} brand logo`} className="max-w-full max-h-full object-contain" loading="lazy" />
-                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent px-3 py-2 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                  <span className="text-white text-[10px] font-mono font-bold uppercase tracking-[0.15em]">{logo.name}</span>
-                </div>
-              </motion.div>
-            </FadeIn>
-          ))}
-        </div>
-        {/* Row 2: 4 logos centered */}
-        <div className="grid grid-cols-3 sm:grid-cols-4 gap-3 sm:gap-4 mt-3 sm:mt-4 max-w-[80%] mx-auto">
-          {BRAND_LOGOS.slice(5, 9).map((logo, i) => (
-            <FadeIn key={logo.name} delay={(i + 5) * 0.06}>
-              <motion.div
-                className="group relative bg-white rounded-xl border border-white/10 overflow-hidden h-[120px] sm:h-[140px] flex items-center justify-center p-4 sm:p-6"
-                whileHover={{ y: -3, borderColor: "hsl(0 78% 48% / 0.3)" }}
-                transition={{ duration: 0.3 }}
-              >
-                <img src={logo.src} alt={`${logo.name} brand logo`} className="max-w-full max-h-full object-contain" loading="lazy" />
-                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent px-3 py-2 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                  <span className="text-white text-[10px] font-mono font-bold uppercase tracking-[0.15em]">{logo.name}</span>
-                </div>
-              </motion.div>
-            </FadeIn>
-          ))}
+                <motion.div
+                  className={`group relative bg-white rounded-xl border border-white/10 overflow-hidden h-[120px] sm:h-[140px] flex items-center justify-center p-4 sm:p-6 ${
+                    isLast && isOddTotal ? "w-[calc(50%-6px)] sm:w-full" : "w-full"
+                  }`}
+                  whileHover={{ y: -3, borderColor: "hsl(0 78% 48% / 0.3)" }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <img src={logo.src} alt={`${logo.name} brand logo`} className="max-w-full max-h-full object-contain" loading="lazy" />
+                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent px-3 py-2 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                    <span className="text-white text-[10px] font-mono font-bold uppercase tracking-[0.15em]">{logo.name}</span>
+                  </div>
+                </motion.div>
+              </FadeIn>
+            );
+          })}
         </div>
       </div>
     </section>
